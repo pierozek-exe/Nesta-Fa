@@ -3,702 +3,946 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>NESTA FA — Treningi indywidualne</title>
-  <meta name="description" content="Indywidualny trening piłkarski w Poznaniu. Programy pozycyjne i pakiety. Mierzalny progres." />
+  <title>NESTA FA — Indywidualny rozwój piłkarza poza klubem</title>
+  <meta name="description" content="NESTA FA — indywidualny rozwój piłkarza poza klubem. Trening 1:1, plan tygodnia, przygotowanie motoryczne, piłkarskie CV, raporty i wsparcie w rozwoju zawodnika." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;0,900;1,900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700;1,900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --primary: rgb(9, 52, 145);
-      --primary-dark: rgb(7, 41, 115);
-      --primary-light: rgba(9, 52, 145, 0.08);
-      --primary-mid: rgba(9, 52, 145, 0.15);
-      --dark: #1e293b;
-      --gray: #64748b;
-      --muted: #94a3b8;
-      --light: #f1f5f9;
-      --lighter: #f8fafc;
-      --border: #e2e8f0;
-      --border-strong: #cbd5e1;
+      --primary: #0934A0;
+      --primary-dark: #072490;
+      --primary-light: rgba(9,52,160,.08);
+      --primary-mid: rgba(9,52,160,.16);
+      --accent: #E8B800;
+      --accent-light: rgba(232,184,0,.12);
+      --dark: #0D1B2A;
+      --dark2: #1A2B3C;
+      --gray: #5A6B7C;
+      --muted: #8FA0B0;
+      --light: #F0F4F8;
+      --lighter: #F7FAFE;
+      --border: #DDE4EE;
+      --border-strong: #B8C6D8;
       --bg: #ffffff;
-      --max: 1140px;
-      --radius: 16px;
+      --max: 1160px;
+      --radius: 18px;
       --radius-sm: 10px;
       --font-display: 'Barlow Condensed', sans-serif;
       --font-body: 'Barlow', sans-serif;
-      --shadow: 0 4px 6px -1px rgba(0,0,0,.07), 0 2px 4px -2px rgba(0,0,0,.05);
-      --shadow-md: 0 10px 24px -4px rgba(0,0,0,.1), 0 4px 8px -4px rgba(0,0,0,.06);
-      --shadow-primary: 0 8px 24px rgba(9,52,145,.2);
+      --shadow: 0 4px 16px rgba(9,52,160,.07), 0 1px 4px rgba(0,0,0,.04);
+      --shadow-md: 0 12px 32px rgba(9,52,160,.12), 0 4px 8px rgba(0,0,0,.06);
+      --shadow-primary: 0 8px 28px rgba(9,52,160,.28);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); background: var(--bg); color: var(--dark); line-height: 1.6; overflow-x: hidden; }
-    a { color: inherit; }
-
-    /* ─── VIEWS ─── */
-    .view { display: none; }
-    .view.active { display: block; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; }
 
     /* ─── NAV ─── */
     .nav {
       position: sticky; top: 0; z-index: 100;
-      backdrop-filter: blur(12px);
-      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(16px) saturate(1.4);
+      background: rgba(255,255,255,.96);
       border-bottom: 1px solid var(--border);
       transition: box-shadow .3s;
     }
-    .nav.scrolled { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+    .nav.scrolled { box-shadow: 0 4px 20px rgba(9,52,160,.1); }
     .nav-inner {
       max-width: var(--max); margin: 0 auto;
-      padding: 0 24px; display: flex; align-items: center;
-      height: 66px; gap: 0;
+      padding: 0 28px; display: flex; align-items: center;
+      height: 68px; gap: 0;
     }
-    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer; }
+    .brand { display: flex; align-items: center; gap: 11px; cursor: pointer; }
     .brand-logo {
-      width: 42px; height: 42px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      border-radius: 10px; display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display); font-size: 18px; font-weight: 900; color: #fff; flex-shrink: 0;
+      width: 44px; height: 44px;
+      background: linear-gradient(140deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 11px; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 20px; font-weight: 900; color: #fff; flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(9,52,160,.3);
     }
-    .brand-name { font-family: var(--font-display); font-size: 20px; font-weight: 900; letter-spacing: .03em; text-transform: uppercase; color: var(--dark); line-height: 1.1; }
-    .brand-sub { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--gray); }
+    .brand-name { font-family: var(--font-display); font-size: 21px; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; color: var(--dark); line-height: 1.1; }
+    .brand-sub { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 
-    /* Main nav links (home view) */
     .nav-links { display: flex; align-items: center; gap: 0; margin-left: auto; padding-right: 20px; }
-    .nav-links a { font-size: 13px; font-weight: 600; color: var(--gray); text-decoration: none; padding: 8px 14px; transition: color .15s; }
+    .nav-links a { font-size: 12.5px; font-weight: 700; color: var(--gray); letter-spacing: .04em; text-transform: uppercase; padding: 8px 13px; transition: color .15s; }
     .nav-links a:hover { color: var(--primary); }
-
-    /* Position page nav extras */
-    .nav-pos { display: none; align-items: center; gap: 12px; margin-left: auto; }
-    .back-link {
-      font-size: 13px; font-weight: 600; color: var(--gray);
-      display: flex; align-items: center; gap: 6px;
-      padding: 8px 14px; border-radius: var(--radius-sm);
-      transition: all .15s; cursor: pointer; text-decoration: none;
-    }
-    .back-link:hover { color: var(--primary); background: var(--primary-light); }
 
     /* ─── BUTTONS ─── */
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       font-family: var(--font-display); font-size: 13px; font-weight: 700;
-      letter-spacing: .08em; text-transform: uppercase; text-decoration: none;
-      padding: 11px 22px; border-radius: var(--radius-sm);
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: 12px 24px; border-radius: var(--radius-sm);
       border: 2px solid var(--border); background: var(--light); color: var(--dark);
       cursor: pointer; transition: all .18s; user-select: none; white-space: nowrap;
     }
     .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
     .btn:active { transform: translateY(0); }
     .btn-primary { background: var(--primary); border-color: var(--primary); color: #fff; box-shadow: var(--shadow-primary); }
-    .btn-primary:hover { background: var(--primary-dark); border-color: var(--primary-dark); box-shadow: 0 12px 28px rgba(9,52,145,.3); }
+    .btn-primary:hover { background: var(--primary-dark); border-color: var(--primary-dark); box-shadow: 0 12px 32px rgba(9,52,160,.35); }
     .btn-outline { background: transparent; border-color: var(--primary); color: var(--primary); }
     .btn-outline:hover { background: var(--primary-light); }
+    .btn-accent { background: var(--accent); border-color: var(--accent); color: var(--dark); box-shadow: 0 6px 20px rgba(232,184,0,.35); }
+    .btn-accent:hover { background: #d4a800; border-color: #d4a800; }
 
     /* ─── WRAP ─── */
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px 80px; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
 
-    /* ─── HOME HERO ─── */
+    /* ─── HERO ─── */
     .hero {
-      background: linear-gradient(135deg, rgba(9,52,145,.05) 0%, rgba(9,52,145,.1) 100%);
+      background: linear-gradient(160deg, #f0f5ff 0%, #e8efff 40%, #f7fafe 100%);
       border-bottom: 1px solid var(--border);
-      padding: 72px 0 80px; position: relative; overflow: hidden;
+      padding: 80px 0 90px; position: relative; overflow: hidden;
     }
+    .hero::after {
+      content: '';
+      position: absolute; top: 0; right: 0; width: 55%; height: 100%;
+      background: url('data:image/svg+xml,<svg width="48" height="48" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1.5" fill="rgba(9,52,160,0.07)"/></svg>');
+      background-size: 24px 24px; pointer-events: none;
+    }
+    /* Large bg letter */
     .hero::before {
-      content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%;
-      background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1.5" fill="rgba(9,52,145,0.08)"/></svg>');
-      background-size: 30px 30px; pointer-events: none;
+      content: 'N';
+      position: absolute; right: -30px; bottom: -60px;
+      font-family: var(--font-display); font-size: 400px; font-weight: 900;
+      color: rgba(9,52,160,.04); line-height: 1; user-select: none; pointer-events: none;
     }
-    .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: center; position: relative; }
-    .kicker { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--primary); margin-bottom: 18px; }
-    .kicker .dot { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-    .h1 { font-family: var(--font-display); font-size: clamp(32px, 4vw, 52px); font-weight: 900; line-height: 1.08; letter-spacing: -.01em; text-transform: uppercase; color: var(--dark); margin-bottom: 20px; }
-    .h1 em { font-style: italic; color: var(--primary); }
-    .sub { font-size: 17px; color: var(--gray); margin-bottom: 32px; line-height: 1.75; max-width: 500px; }
-    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
-    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; }
-    .pill { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--primary); background: var(--primary-light); border: 1px solid rgba(9,52,145,.2); padding: 5px 12px; border-radius: 20px; }
-    .hero-aside { display: flex; flex-direction: column; gap: 16px; }
-    .hero-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .stat-block { background: #fff; border: 2px solid var(--border); border-radius: var(--radius-sm); padding: 20px 16px; box-shadow: var(--shadow); transition: all .2s; position: relative; overflow: hidden; }
-    .stat-block::before { content: ''; position: absolute; bottom: 0; left: 0; width: 36px; height: 3px; background: var(--primary); }
-    .stat-block:hover { border-color: var(--primary); box-shadow: var(--shadow-md); transform: translateY(-2px); }
-    .stat-block .val { font-family: var(--font-display); font-size: 30px; font-weight: 900; color: var(--primary); line-height: 1; }
-    .stat-block .label { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--gray); margin-top: 5px; }
-    .hero-cta-card { background: linear-gradient(135deg, rgba(9,52,145,.12), rgba(9,52,145,.04)); border: 2px solid rgba(9,52,145,.2); border-radius: var(--radius-sm); padding: 22px; display: flex; flex-direction: column; gap: 10px; }
-    .hero-cta-card .cta-title { font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--primary); }
-    .hero-cta-card p { font-size: 13px; color: var(--gray); line-height: 1.65; }
+    .hero-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 56px; align-items: center; position: relative; z-index: 1; }
 
-    /* ─── SECTIONS ─── */
-    section { padding: 72px 0; }
-    section:nth-child(even) { background: var(--lighter); }
-    .section-header { margin-bottom: 48px; }
-    .section-label { font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--primary); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-    .section-label::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--primary); }
-    .section-title { font-family: var(--font-display); font-size: clamp(26px, 3vw, 38px); font-weight: 900; text-transform: uppercase; letter-spacing: -.01em; color: var(--dark); margin-bottom: 10px; line-height: 1.1; }
-    .section-desc { font-size: 16px; color: var(--gray); max-width: 560px; line-height: 1.75; }
+    .kicker { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--primary); margin-bottom: 20px; }
+    .kicker .dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; animation: pulse 2.2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(0.8)} }
+
+    .h1 {
+      font-family: var(--font-display); font-size: clamp(34px, 4.2vw, 58px);
+      font-weight: 900; line-height: 1.05; letter-spacing: -.01em;
+      text-transform: uppercase; color: var(--dark); margin-bottom: 10px;
+    }
+    .h1-sub { font-family: var(--font-display); font-size: clamp(18px, 2.2vw, 28px); font-weight: 600; font-style: italic; color: var(--primary); margin-bottom: 22px; letter-spacing: .02em; }
+    .sub { font-size: 16.5px; color: var(--gray); margin-bottom: 34px; line-height: 1.8; max-width: 520px; }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+
+    .hero-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill { font-size: 11.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--primary); background: var(--primary-light); border: 1px solid rgba(9,52,160,.18); padding: 5px 13px; border-radius: 20px; }
+
+    .hero-aside { display: flex; flex-direction: column; gap: 14px; position: relative; z-index: 1; }
+    .hero-service-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .hero-scard {
+      background: #fff; border: 2px solid var(--border); border-radius: 12px;
+      padding: 18px 14px; box-shadow: var(--shadow);
+      transition: all .22s; cursor: default;
+    }
+    .hero-scard:hover { border-color: var(--primary); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .hero-scard .scard-icon { font-size: 22px; margin-bottom: 7px; }
+    .hero-scard .scard-val { font-family: var(--font-display); font-size: 15px; font-weight: 900; color: var(--primary); letter-spacing: .02em; text-transform: uppercase; line-height: 1.2; margin-bottom: 3px; }
+    .hero-scard .scard-label { font-size: 11px; font-weight: 600; color: var(--gray); letter-spacing: .06em; text-transform: uppercase; }
+
+    .hero-audit-card {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: var(--radius-sm); padding: 22px 20px; color: #fff;
+    }
+    .hero-audit-card .audit-label { font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.65); margin-bottom: 8px; }
+    .hero-audit-card .audit-title { font-family: var(--font-display); font-size: 17px; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 8px; }
+    .hero-audit-card p { font-size: 12.5px; color: rgba(255,255,255,.75); line-height: 1.65; margin-bottom: 14px; }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 80px 0; }
+    section.alt { background: var(--lighter); }
+    .section-label { font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--primary); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .section-label::before { content: ''; display: inline-block; width: 22px; height: 2px; background: var(--primary); }
+    .section-title { font-family: var(--font-display); font-size: clamp(28px, 3vw, 44px); font-weight: 900; text-transform: uppercase; letter-spacing: -.01em; color: var(--dark); margin-bottom: 12px; line-height: 1.08; }
+    .section-desc { font-size: 16px; color: var(--gray); max-width: 560px; line-height: 1.8; }
+    .section-header { margin-bottom: 52px; }
 
     /* ─── GRID ─── */
-    .grid { display: grid; gap: 20px; }
+    .grid { display: grid; gap: 22px; }
+    .grid-4 { grid-template-columns: repeat(4,1fr); }
     .grid-3 { grid-template-columns: repeat(3,1fr); }
     .grid-2 { grid-template-columns: repeat(2,1fr); }
+    .grid-5c { grid-template-columns: repeat(5,1fr); }
 
     /* ─── CARD ─── */
-    .card { background: #fff; border: 2px solid var(--border); border-radius: var(--radius); padding: 28px 24px; box-shadow: var(--shadow); transition: all .25s; position: relative; }
+    .card { background: #fff; border: 2px solid var(--border); border-radius: var(--radius); padding: 30px 26px; box-shadow: var(--shadow); transition: all .25s; position: relative; overflow: hidden; }
     .card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: var(--border-strong); }
-    .card h3 { font-family: var(--font-display); font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--dark); margin-bottom: 10px; }
-    .card p { font-size: 14px; color: var(--gray); line-height: 1.65; }
-    .card-number { font-family: var(--font-display); font-size: 64px; font-weight: 900; color: rgba(9,52,145,.07); position: absolute; top: 12px; right: 16px; line-height: 1; user-select: none; }
+    .card-num { font-family: var(--font-display); font-size: 72px; font-weight: 900; color: rgba(9,52,160,.06); position: absolute; top: 8px; right: 14px; line-height: 1; user-select: none; }
+    .card h3 { font-family: var(--font-display); font-size: 19px; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; color: var(--dark); margin-bottom: 10px; }
+    .card p { font-size: 14px; color: var(--gray); line-height: 1.7; }
+    .card-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: 3px 10px; background: var(--primary-light); color: var(--primary); border: 1px solid rgba(9,52,160,.18); border-radius: 20px; margin-bottom: 13px; }
 
-    ul.clean { margin-top: 14px; padding: 0; list-style: none; }
-    ul.clean li { font-size: 14px; color: var(--gray); padding: 8px 0 8px 22px; border-bottom: 1px solid var(--border); position: relative; }
-    ul.clean li::before { content: '✓'; position: absolute; left: 0; color: var(--primary); font-weight: 700; }
-    ul.clean li:last-child { border-bottom: none; }
+    ul.check { margin-top: 14px; padding: 0; list-style: none; }
+    ul.check li { font-size: 13.5px; color: var(--gray); padding: 8px 0 8px 22px; border-bottom: 1px solid var(--border); position: relative; }
+    ul.check li::before { content: '✓'; position: absolute; left: 0; color: var(--primary); font-weight: 700; }
+    ul.check li:last-child { border-bottom: none; }
 
-    /* ─── POSITION CARDS (home) ─── */
-    .link-card { text-decoration: none; display: block; cursor: pointer; }
-    .link-card:hover { border-color: var(--primary); }
-    .link-card:hover .mini-cta { color: var(--primary); }
-    .pos-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 3px 10px; background: var(--primary-light); color: var(--primary); border: 1px solid rgba(9,52,145,.2); border-radius: 20px; margin-bottom: 14px; }
-    .mini-cta { display: inline-block; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gray); margin-top: 16px; transition: color .15s; }
+    /* ─── OFFER CARDS ─── */
+    .offer-card {
+      background: #fff; border: 2px solid var(--border); border-radius: var(--radius);
+      padding: 36px 28px; box-shadow: var(--shadow); transition: all .25s;
+      display: flex; flex-direction: column; position: relative; overflow: hidden;
+    }
+    .offer-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--border); transition: background .25s; }
+    .offer-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+    .offer-card:hover::before { background: var(--primary); }
+    .offer-card.featured { border-color: var(--primary); box-shadow: var(--shadow-primary); }
+    .offer-card.featured::before { background: var(--primary); }
+    .offer-badge { position: absolute; top: 16px; right: 16px; background: var(--primary); color: #fff; font-family: var(--font-display); font-size: 9px; font-weight: 900; letter-spacing: .16em; padding: 3px 10px; border-radius: 20px; }
+    .offer-name { font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gray); margin-bottom: 12px; }
+    .offer-price { font-family: var(--font-display); font-size: 48px; font-weight: 900; color: var(--primary); letter-spacing: -.02em; line-height: 1; }
+    .offer-price sup { font-size: 22px; vertical-align: super; }
+    .offer-price-note { font-size: 12.5px; color: var(--muted); margin-bottom: 18px; margin-top: 3px; }
+    .offer-desc { font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 18px; }
+    .offer-divider { height: 1px; background: var(--border); margin: 16px 0; }
+    .offer-card .btn { margin-top: auto; width: 100%; }
 
-    /* ─── PACKAGES ─── */
-    .package-card { background: #fff; border: 2px solid var(--border); border-radius: var(--radius); padding: 36px 28px; box-shadow: var(--shadow); transition: all .25s; display: flex; flex-direction: column; position: relative; }
-    .package-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
-    .package-card.featured { border-color: var(--primary); box-shadow: var(--shadow-primary); }
-    .package-card.featured::before { content: 'NAJPOPULARNIEJSZY'; position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--primary); color: #fff; font-family: var(--font-display); font-size: 10px; font-weight: 900; letter-spacing: .14em; padding: 4px 18px; border-radius: 0 0 8px 8px; }
-    .pkg-name { font-size: 12px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--gray); margin-bottom: 12px; }
-    .price-amount { font-family: var(--font-display); font-size: 52px; font-weight: 900; color: var(--primary); letter-spacing: -.02em; line-height: 1; }
-    .price-sub { font-size: 13px; color: var(--gray); margin-bottom: 4px; }
-    .price-fine { font-size: 11px; color: var(--muted); margin-bottom: 20px; }
-    .divider { height: 1px; background: var(--border); margin: 18px 0; }
-    .package-card .btn { margin-top: auto; width: 100%; justify-content: center; }
+    /* ─── HOW WE WORK ─── */
+    .process-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 0; position: relative; }
+    .process-grid::before {
+      content: ''; position: absolute;
+      top: 34px; left: 10%; right: 10%; height: 2px;
+      background: linear-gradient(90deg, var(--primary-mid), var(--primary), var(--primary-mid));
+      z-index: 0;
+    }
+    .process-step { text-align: center; padding: 0 12px; position: relative; z-index: 1; }
+    .process-num {
+      width: 68px; height: 68px; margin: 0 auto 18px;
+      background: #fff; border: 3px solid var(--primary); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 28px; font-weight: 900; color: var(--primary);
+      box-shadow: 0 4px 16px rgba(9,52,160,.2);
+    }
+    .process-step.active .process-num { background: var(--primary); color: #fff; }
+    .process-step h4 { font-family: var(--font-display); font-size: 16px; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; color: var(--dark); margin-bottom: 8px; }
+    .process-step p { font-size: 12.5px; color: var(--gray); line-height: 1.65; }
 
-    /* ─── FORM ─── */
-    .form-section { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 20px; }
-    .form-card { background: #fff; border: 2px solid var(--border); border-radius: var(--radius); padding: 36px 32px; box-shadow: var(--shadow); }
-    .info-card { background: var(--lighter); border: 2px solid var(--border); border-radius: var(--radius); padding: 36px 28px; }
+    /* ─── FOR WHOM ─── */
+    .target-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .target-card {
+      background: #fff; border: 2px solid var(--border); border-radius: var(--radius);
+      padding: 28px 26px; display: flex; gap: 18px; align-items: flex-start;
+      transition: all .2s; box-shadow: var(--shadow);
+    }
+    .target-card:hover { border-color: var(--primary); box-shadow: var(--shadow-md); }
+    .target-icon { font-size: 28px; flex-shrink: 0; width: 52px; height: 52px; background: var(--primary-light); border: 2px solid rgba(9,52,160,.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+    .target-card h4 { font-family: var(--font-display); font-size: 17px; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; color: var(--dark); margin-bottom: 7px; }
+    .target-card p { font-size: 13.5px; color: var(--gray); line-height: 1.7; }
+
+    /* ─── REPORT ─── */
+    .report-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 28px; align-items: start; }
+    .report-pillars { display: grid; gap: 16px; }
+    .report-pillar {
+      background: #fff; border: 2px solid var(--border); border-radius: var(--radius-sm);
+      padding: 24px 22px; display: flex; gap: 18px; align-items: flex-start;
+      box-shadow: var(--shadow); transition: all .2s;
+    }
+    .report-pillar:hover { border-color: var(--primary); transform: translateX(4px); }
+    .rp-num { font-family: var(--font-display); font-size: 38px; font-weight: 900; color: var(--primary); opacity: .25; flex-shrink: 0; line-height: 1; width: 32px; }
+    .rp-content h4 { font-family: var(--font-display); font-size: 17px; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; color: var(--dark); margin-bottom: 6px; }
+    .rp-content p { font-size: 13.5px; color: var(--gray); line-height: 1.7; }
+    .report-sample {
+      background: linear-gradient(145deg, rgba(9,52,160,.06), rgba(9,52,160,.02));
+      border: 2px solid rgba(9,52,160,.15); border-radius: var(--radius);
+      padding: 32px 28px;
+    }
+    .report-sample .rs-label { font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--primary); margin-bottom: 12px; }
+    .report-sample .rs-title { font-family: var(--font-display); font-size: 22px; font-weight: 900; text-transform: uppercase; color: var(--dark); margin-bottom: 16px; }
+    .rs-metric { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); }
+    .rs-metric:last-of-type { border-bottom: none; }
+    .rs-metric span { font-size: 13px; color: var(--gray); }
+    .rs-bar-wrap { display: flex; align-items: center; gap: 8px; }
+    .rs-bar { height: 6px; width: 80px; background: var(--light); border-radius: 3px; overflow: hidden; }
+    .rs-bar-fill { height: 100%; background: var(--primary); border-radius: 3px; }
+    .rs-bar-val { font-family: var(--font-display); font-size: 14px; font-weight: 900; color: var(--primary); }
+
+    /* ─── ABOUT ─── */
+    .about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 48px; align-items: center; }
+    .about-visual {
+      background: linear-gradient(140deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: var(--radius); padding: 48px 36px;
+      color: #fff; text-align: center; box-shadow: var(--shadow-primary);
+      position: relative; overflow: hidden;
+    }
+    .about-visual::before {
+      content: 'NFA';
+      position: absolute; bottom: -20px; right: -14px;
+      font-family: var(--font-display); font-size: 140px; font-weight: 900;
+      color: rgba(255,255,255,.08); line-height: 1; user-select: none;
+    }
+    .about-initials { font-family: var(--font-display); font-size: 72px; font-weight: 900; letter-spacing: -.02em; line-height: 1; margin-bottom: 14px; position: relative; z-index: 1; }
+    .about-location { font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.65); position: relative; z-index: 1; margin-bottom: 20px; }
+    .about-tag { display: inline-block; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 5px 13px; color: rgba(255,255,255,.9); margin: 3px; position: relative; z-index: 1; }
+    .about-tags { position: relative; z-index: 1; }
+    .about-content h2 { font-family: var(--font-display); font-size: clamp(24px, 2.8vw, 38px); font-weight: 900; text-transform: uppercase; letter-spacing: -.01em; color: var(--dark); margin-bottom: 18px; line-height: 1.1; }
+    .about-content p { font-size: 15px; color: var(--gray); line-height: 1.85; margin-bottom: 16px; }
+    .about-content p:last-child { margin-bottom: 0; }
+    .about-highlight { background: var(--primary-light); border-left: 3px solid var(--primary); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 14px 18px; margin: 20px 0; }
+    .about-highlight p { font-size: 14px; color: var(--dark); font-weight: 600; margin-bottom: 0; }
+
+    /* ─── FAQ ─── */
+    .faq-list { max-width: 800px; margin: 0 auto; }
+    .faq-item { border: 2px solid var(--border); border-radius: var(--radius-sm); margin-bottom: 12px; overflow: hidden; transition: border-color .2s; }
+    .faq-item.open { border-color: var(--primary); }
+    .faq-q {
+      padding: 20px 24px; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      font-family: var(--font-display); font-size: 16px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .04em; color: var(--dark);
+      transition: color .15s; user-select: none; background: #fff;
+    }
+    .faq-q:hover { color: var(--primary); }
+    .faq-item.open .faq-q { color: var(--primary); background: var(--primary-light); }
+    .faq-arrow { width: 20px; height: 20px; flex-shrink: 0; color: var(--muted); transition: transform .2s; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); color: var(--primary); }
+    .faq-a { display: none; padding: 16px 24px 20px; background: #fff; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a p { font-size: 14.5px; color: var(--gray); line-height: 1.8; }
+
+    /* ─── SIGNUP FORM ─── */
+    .form-section { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; }
+    .form-card { background: #fff; border: 2px solid var(--border); border-radius: var(--radius); padding: 40px 36px; box-shadow: var(--shadow); }
+    .form-title { font-family: var(--font-display); font-size: 22px; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; color: var(--dark); margin-bottom: 6px; }
+    .form-subtitle { font-size: 14px; color: var(--gray); margin-bottom: 28px; }
     .form { display: grid; gap: 16px; }
-    label { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--gray); display: block; margin-bottom: 6px; }
+    label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gray); display: block; margin-bottom: 5px; }
     input, select, textarea { width: 100%; padding: 12px 14px; background: #fff; border: 2px solid var(--border); border-radius: var(--radius-sm); color: var(--dark); font-family: var(--font-body); font-size: 14px; outline: none; transition: border-color .15s; }
     input:focus, select:focus, textarea:focus { border-color: var(--primary); }
-    textarea { min-height: 100px; resize: vertical; }
+    textarea { min-height: 90px; resize: vertical; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .contact-info-title { font-family: var(--font-display); font-size: 15px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--dark); margin-bottom: 20px; }
-    .contact-lines { display: grid; gap: 16px; margin-bottom: 28px; }
+
+    .info-card { background: var(--lighter); border: 2px solid var(--border); border-radius: var(--radius); padding: 36px 28px; }
+    .info-card-title { font-family: var(--font-display); font-size: 16px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; color: var(--dark); margin-bottom: 20px; }
+    .contact-lines { display: grid; gap: 14px; margin-bottom: 28px; }
     .contact-line { display: flex; align-items: center; gap: 14px; }
-    .contact-icon { width: 38px; height: 38px; flex-shrink: 0; background: var(--primary-light); border: 2px solid rgba(9,52,145,.15); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 16px; }
-    .contact-line small { display: block; font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--gray); margin-bottom: 2px; }
+    .contact-icon { width: 40px; height: 40px; flex-shrink: 0; background: var(--primary-light); border: 2px solid rgba(9,52,160,.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 17px; }
+    .contact-line small { display: block; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
     .contact-line b { font-size: 14px; font-weight: 600; color: var(--dark); }
+    .divider { height: 1px; background: var(--border); margin: 22px 0; }
+
     .step-list { list-style: none; display: grid; gap: 0; }
-    .step-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+    .step-item { display: flex; align-items: flex-start; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--border); }
     .step-item:last-child { border-bottom: none; }
-    .step-num { font-family: var(--font-display); font-size: 24px; font-weight: 900; color: var(--primary); flex-shrink: 0; width: 28px; line-height: 1; margin-top: 2px; }
-    .step-text strong { display: block; font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 2px; }
+    .step-num { font-family: var(--font-display); font-size: 24px; font-weight: 900; color: var(--primary); flex-shrink: 0; width: 28px; line-height: 1; margin-top: 3px; }
+    .step-text strong { display: block; font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 1px; }
     .step-text span { font-size: 12px; color: var(--gray); }
 
-    /* ─── POSITION PAGE HERO ─── */
-    .pos-hero { background: linear-gradient(135deg, rgba(9,52,145,.05) 0%, rgba(9,52,145,.1) 100%); border-bottom: 1px solid var(--border); padding: 56px 0 60px; position: relative; overflow: hidden; }
-    .pos-hero::before { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1.5" fill="rgba(9,52,145,0.08)"/></svg>'); background-size: 30px 30px; pointer-events: none; }
-    .pos-hero h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 60px); font-weight: 900; line-height: 1.05; letter-spacing: -.01em; text-transform: uppercase; color: var(--dark); margin-bottom: 14px; }
-    .pos-hero h1 em { font-style: italic; color: var(--primary); }
-    .pos-hero-sub { font-size: 16px; color: var(--gray); max-width: 560px; line-height: 1.75; margin-bottom: 28px; }
-    .pos-hero-wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; position: relative; }
-
-    /* ─── POSITION PAGE CONTENT ─── */
-    .pos-content { padding: 60px 0 80px; }
-    .pos-content .wrap { padding-bottom: 0; }
-    .card-label { font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--primary); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
-    .card-label::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--primary); }
-    ul.items { list-style: none; padding: 0; margin: 0; }
-    ul.items li { font-size: 14px; color: var(--gray); padding: 8px 0 8px 22px; border-bottom: 1px solid var(--border); position: relative; }
-    ul.items li::before { content: '✓'; position: absolute; left: 0; color: var(--primary); font-weight: 700; }
-    ul.items li:last-child { border-bottom: none; }
-    .cta-banner { background: linear-gradient(135deg, rgba(9,52,145,.06), rgba(9,52,145,.02)); border: 2px solid rgba(9,52,145,.15); border-radius: var(--radius); padding: 32px 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 40px; flex-wrap: wrap; }
-    .cta-banner h3 { font-family: var(--font-display); font-size: 22px; font-weight: 900; text-transform: uppercase; color: var(--dark); margin-bottom: 6px; }
-    .cta-banner p { font-size: 14px; color: var(--gray); }
-    .cta-banner-btns { display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0; }
+    /* ─── CTA BANNER ─── */
+    .cta-banner {
+      background: linear-gradient(140deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: var(--radius); padding: 52px 48px;
+      display: flex; align-items: center; justify-content: space-between; gap: 32px;
+      color: #fff; flex-wrap: wrap; box-shadow: var(--shadow-primary);
+      position: relative; overflow: hidden;
+    }
+    .cta-banner::before {
+      content: 'NESTA FA';
+      position: absolute; right: -20px; bottom: -30px;
+      font-family: var(--font-display); font-size: 130px; font-weight: 900;
+      color: rgba(255,255,255,.06); line-height: 1; user-select: none;
+    }
+    .cta-banner h2 { font-family: var(--font-display); font-size: clamp(24px, 3vw, 38px); font-weight: 900; text-transform: uppercase; margin-bottom: 10px; line-height: 1.08; }
+    .cta-banner p { font-size: 15px; color: rgba(255,255,255,.8); line-height: 1.75; max-width: 500px; }
+    .cta-banner-btns { display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0; position: relative; z-index: 1; }
 
     /* ─── FOOTER ─── */
-    footer { background: var(--dark); color: #fff; padding: 36px 24px; }
-    .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-    .footer-brand { font-family: var(--font-display); font-size: 20px; font-weight: 900; letter-spacing: .04em; }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a { color: #94a3b8; text-decoration: none; font-size: 13px; transition: color .15s; cursor: pointer; }
+    footer { background: var(--dark); color: #fff; padding: 40px 28px; }
+    .footer-inner { max-width: var(--max); margin: 0 auto; }
+    .footer-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 32px; margin-bottom: 32px; }
+    .footer-brand-block .fb-name { font-family: var(--font-display); font-size: 24px; font-weight: 900; letter-spacing: .04em; margin-bottom: 4px; }
+    .footer-brand-block .fb-tagline { font-size: 12px; color: #94a3b8; }
+    .footer-links { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; }
+    .footer-links a { color: #94a3b8; font-size: 12.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; transition: color .15s; cursor: pointer; }
     .footer-links a:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 22px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
     .footer-copy { font-size: 12px; color: #64748b; }
 
     /* ─── TOAST ─── */
-    .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: 20px; background: var(--primary); color: #fff; font-weight: 700; font-size: 13px; padding: 12px 22px; border-radius: var(--radius-sm); display: none; z-index: 200; box-shadow: 0 8px 24px rgba(9,52,145,.35); }
-    .toast.show { display: block; animation: slideUp .2s ease; }
+    .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: 24px; background: var(--primary); color: #fff; font-weight: 700; font-size: 13px; padding: 13px 24px; border-radius: var(--radius-sm); display: none; z-index: 200; box-shadow: 0 10px 28px rgba(9,52,160,.4); }
+    .toast.show { display: block; animation: slideUp .22s ease; }
     @keyframes slideUp { from { transform: translate(-50%, 10px); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }
 
     /* ─── RESPONSIVE ─── */
-    @media (max-width: 960px) {
+    @media (max-width: 1000px) {
+      .grid-4 { grid-template-columns: repeat(2,1fr); }
+      .grid-5c { grid-template-columns: repeat(2,1fr); }
       .hero-grid { grid-template-columns: 1fr; }
       .hero-aside { display: none; }
+      .report-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-visual { display: none; }
+      .form-section { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
       .grid-3 { grid-template-columns: 1fr; }
       .grid-2 { grid-template-columns: 1fr; }
-      .form-section { grid-template-columns: 1fr; }
+      .target-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .nav-links { display: none; }
-      .cta-banner { flex-direction: column; align-items: flex-start; }
+      .cta-banner { padding: 36px 28px; flex-direction: column; align-items: flex-start; }
+      .process-grid { grid-template-columns: 1fr; gap: 28px; }
+      .process-grid::before { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ═══════════════════ NAV ═══════════════════ -->
+  <!-- ═══════════════ NAV ═══════════════ -->
   <nav class="nav" id="navbar">
     <div class="nav-inner">
-      <div class="brand" onclick="showView('home')">
+      <div class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">
         <div class="brand-logo">N</div>
         <div>
           <div class="brand-name">NESTA FA</div>
-          <div class="brand-sub" id="navSub">Treningi indywidualne</div>
+          <div class="brand-sub">Indywidualny Rozwój Piłkarza</div>
         </div>
       </div>
-
-      <!-- Home nav links -->
       <div class="nav-links" id="navHome">
-        <a href="#oferta" onclick="showView('home')">Oferta</a>
-        <a href="#pozycje" onclick="showView('home')">Pozycje</a>
-        <a href="#pakiety" onclick="showView('home')">Pakiety</a>
-        <a href="#kontakt" onclick="showView('home')">Kontakt</a>
+        <a href="#oferta">Oferta</a>
+        <a href="#jak-dzialamy">Jak działamy</a>
+        <a href="#dla-kogo">Dla kogo</a>
+        <a href="#raporty">Raporty</a>
+        <a href="#o-mnie">O mnie</a>
+        <a href="#faq">FAQ</a>
+        <a href="#zgloszenie">Zgłoszenie</a>
       </div>
-
-      <!-- Position page nav -->
-      <div class="nav-pos" id="navPos">
-        <span class="back-link" onclick="showView('home', 'pozycje')">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-          Wróć do pozycji
-        </span>
-      </div>
-
-      <a class="btn btn-primary" id="navCta" href="#kontakt" style="margin-left:auto; flex-shrink:0">Umów analizę</a>
+      <a class="btn btn-primary" href="#zgloszenie" style="margin-left:auto; flex-shrink:0">Umów audyt</a>
     </div>
   </nav>
 
-  <!-- ═══════════════════ HOME VIEW ═══════════════════ -->
-  <div class="view active" id="view-home">
-    <header class="hero" id="top">
-      <div class="wrap" style="padding-bottom:0">
-        <div class="hero-grid">
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker"><span class="dot"></span> Poznań · Zawodnicy 10–20 lat · Poza klubem</div>
+          <h1 class="h1">NESTA FA</h1>
+          <div class="h1-sub">Indywidualny rozwój piłkarza poza klubem.</div>
+          <p class="sub">Pomagamy młodym zawodnikom trenować mądrzej: technika, szybkość, siła, regeneracja, plan tygodnia, piłkarskie CV i przygotowanie pod dalszy rozwój sportowy.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#zgloszenie">Umów audyt zawodnika</a>
+            <a class="btn btn-outline" href="#oferta">Zobacz ofertę</a>
+          </div>
+          <div class="hero-pills">
+            <span class="pill">Trening 1:1</span>
+            <span class="pill">Plan tygodnia</span>
+            <span class="pill">Przygotowanie motoryczne</span>
+            <span class="pill">Piłkarskie CV</span>
+            <span class="pill">Raport zawodnika</span>
+            <span class="pill">Analiza gry</span>
+          </div>
+        </div>
+        <div class="hero-aside">
+          <div class="hero-service-cards">
+            <div class="hero-scard"><div class="scard-icon">⚽</div><div class="scard-val">Trening 1:1</div><div class="scard-label">od 120 zł</div></div>
+            <div class="hero-scard"><div class="scard-icon">📊</div><div class="scard-val">Football Audit</div><div class="scard-label">199 zł</div></div>
+            <div class="hero-scard"><div class="scard-icon">📅</div><div class="scard-val">Performance Plan</div><div class="scard-label">499 zł/mies.</div></div>
+            <div class="hero-scard"><div class="scard-icon">📄</div><div class="scard-val">Player CV</div><div class="scard-label">od 149 zł</div></div>
+          </div>
+          <div class="hero-audit-card">
+            <div class="audit-label">Pierwszy krok</div>
+            <div class="audit-title">NESTA Football Audit</div>
+            <p>Jednorazowa analiza tygodnia zawodnika — plan treningowy, motoryczny i dalsze działania.</p>
+            <a class="btn btn-accent" href="#zgloszenie" style="font-size:12px; padding:10px 20px; width:fit-content">Zamów audyt — 199 zł →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════ OFERTA ═══════════════ -->
+  <section id="oferta">
+    <div class="wrap">
+      <div class="section-header">
+        <div class="section-label">Oferta</div>
+        <h2 class="section-title">4 główne usługi</h2>
+        <p class="section-desc">Konkretna oferta z jasnymi cenami. Możesz zacząć od jednej konsultacji albo wybrać pełny miesięczny plan prowadzenia.</p>
+      </div>
+      <div class="grid grid-2">
+
+        <!-- 1 -->
+        <div class="offer-card">
+          <div class="offer-name">01 · Diagnoza</div>
+          <div class="offer-price"><sup></sup>199</div>
+          <div style="font-family:var(--font-display);font-size:13px;font-weight:900;color:var(--primary);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">zł · jednorazowo</div>
+          <div class="offer-price-note">Bez zobowiązań. Dobry start.</div>
+          <div class="offer-desc">Analiza tygodnia zawodnika: jak trenuje, ile odpoczywa, co mu brakuje i co poprawić w pierwszej kolejności. Dostajesz konkretny raport i plan działań.</div>
+          <div class="offer-divider"></div>
+          <ul class="check">
+            <li>Analiza obecnego planu treningowego</li>
+            <li>Ocena motoryki, regeneracji i obciążeń</li>
+            <li>Raport PDF z oceną i planem działań</li>
+            <li>Rekomendacje na kolejne tygodnie</li>
+          </ul>
+          <div class="offer-divider"></div>
+          <button class="btn btn-primary" type="button" data-select-service="NESTA Football Audit (199 zł)">Zamów audyt →</button>
+        </div>
+
+        <!-- 2 -->
+        <div class="offer-card featured">
+          <div class="offer-badge">Najpopularniejszy</div>
+          <div class="offer-name">02 · Miesięczny plan</div>
+          <div class="offer-price"><sup></sup>499</div>
+          <div style="font-family:var(--font-display);font-size:13px;font-weight:900;color:var(--primary);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">zł / miesiąc</div>
+          <div class="offer-price-note">Pełne prowadzenie zawodnika.</div>
+          <div class="offer-desc">Miesięczny plan treningowy i motoryczny dopasowany do zawodnika, kontrola postępów, feedback i raport na koniec okresu.</div>
+          <div class="offer-divider"></div>
+          <ul class="check">
+            <li>Plan tygodniowy: trening + motoryka + regeneracja</li>
+            <li>Stały kontakt i korekty planu</li>
+            <li>Feedback po każdym tygodniu</li>
+            <li>Miesięczny raport z oceną progresu</li>
+            <li>Przygotowanie pod mecze i turnieje</li>
+          </ul>
+          <div class="offer-divider"></div>
+          <button class="btn btn-primary" type="button" data-select-service="NESTA Performance Plan (499 zł/mies.)">Zacznij plan →</button>
+        </div>
+
+        <!-- 3 -->
+        <div class="offer-card">
+          <div class="offer-name">03 · Piłkarskie CV</div>
+          <div class="offer-price" style="font-size:38px">149<span style="font-size:20px;color:var(--muted)">–</span>299</div>
+          <div style="font-family:var(--font-display);font-size:13px;font-weight:900;color:var(--primary);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">zł · jednorazowo</div>
+          <div class="offer-price-note">Zależnie od wariantu (podstawowy / premium).</div>
+          <div class="offer-desc">Profesjonalne piłkarskie CV i profil zawodnika. Idealnie do wysłania do akademii, skautów i agentów. Zawiera statystyki, opis pozycji, cele i materiał wideo.</div>
+          <div class="offer-divider"></div>
+          <ul class="check">
+            <li>Sportowe CV w formacie PDF (gotowe do wysłania)</li>
+            <li>Profil zawodnika: pozycja, styl gry, mocne strony</li>
+            <li>Wersja premium: opis wideo + prezentacja online</li>
+            <li>Korekta i aktualizacja po zmianach</li>
+          </ul>
+          <div class="offer-divider"></div>
+          <button class="btn btn-outline" type="button" data-select-service="NESTA Player CV (149–299 zł)">Zamów CV →</button>
+        </div>
+
+        <!-- 4 -->
+        <div class="offer-card">
+          <div class="offer-name">04 · Trening indywidualny</div>
+          <div class="offer-price" style="font-size:38px">120<span style="font-size:20px;color:var(--muted)">–</span>200</div>
+          <div style="font-family:var(--font-display);font-size:13px;font-weight:900;color:var(--primary);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">zł / sesja · Poznań</div>
+          <div class="offer-price-note">Cena zależna od długości sesji i programu.</div>
+          <div class="offer-desc">Indywidualny trening techniczny i motoryczny 1:1 na boisku. Każda sesja ma konkretny cel i jest częścią szerszego planu zawodnika.</div>
+          <div class="offer-divider"></div>
+          <ul class="check">
+            <li>Technika z piłką: przyjęcie, drybbling, strzał, podanie</li>
+            <li>Przygotowanie motoryczne: szybkość, siła, COD</li>
+            <li>Regeneracja i prewencja kontuzji</li>
+            <li>Notatka po sesji + zadanie na kolejny tydzień</li>
+          </ul>
+          <div class="offer-divider"></div>
+          <button class="btn btn-outline" type="button" data-select-service="Trening 1:1 (120–200 zł/sesja)">Umów trening →</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ JAK DZIAŁAMY ═══════════════ -->
+  <section class="alt" id="jak-dzialamy">
+    <div class="wrap">
+      <div class="section-header">
+        <div class="section-label">Jak działamy</div>
+        <h2 class="section-title">5 kroków współpracy</h2>
+        <p class="section-desc">Jasny, powtarzalny proces. Od diagnozy po mierzalny progres i raport końcowy.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step active">
+          <div class="process-num">1</div>
+          <h4>Diagnoza</h4>
+          <p>Analizujemy tydzień zawodnika: klub, trening własny, regeneracja, obciążenia, cele.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">2</div>
+          <h4>Plan</h4>
+          <p>Układamy indywidualny plan tygodnia: co trenować, kiedy, ile i jak intensywnie.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">3</div>
+          <h4>Trening</h4>
+          <p>Sesje 1:1 lub trening samodzielny wg planu. Każda sesja z celem i oceną.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">4</div>
+          <h4>Raport</h4>
+          <p>Po każdym bloku raport z postępami, metrykami i obserwacjami z treningu.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">5</div>
+          <h4>Rozwój</h4>
+          <p>Korekta planu, nowe cele, wsparcie w budowie CV i przygotowaniu na kolejny poziom.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ DLA KOGO ═══════════════ -->
+  <section id="dla-kogo">
+    <div class="wrap">
+      <div class="section-header">
+        <div class="section-label">Dla kogo</div>
+        <h2 class="section-title">NESTA FA to dla ciebie, jeśli…</h2>
+        <p class="section-desc">Pracujemy z zawodnikami w wieku 10–20 lat. Trenujesz w klubie — my pomagamy ci trenować mądrzej poza nim.</p>
+      </div>
+      <div class="target-grid">
+        <div class="target-card">
+          <div class="target-icon">⚡</div>
           <div>
-            <div class="kicker"><span class="dot"></span> Poznań · Performance · Mierzalny progres</div>
-            <h1 class="h1">Indywidualny trening piłkarski<br><em>oparty na analizie i metrykach.</em></h1>
-            <p class="sub">Wybierasz pozycję i cel. Dostajesz plan rozwoju 1:1, progresje, monitoring oraz feedback wideo.</p>
-            <div class="cta-row">
-              <a class="btn btn-primary" href="#pozycje">Wybierz pozycję</a>
-              <a class="btn btn-outline" href="#pakiety">Zobacz pakiety</a>
-            </div>
-            <div class="pill-row">
-              <span class="pill">Analiza wideo</span>
-              <span class="pill">Testy co 4 tygodnie</span>
-              <span class="pill">Plan 1:1</span>
-              <span class="pill">Progres do zmierzenia</span>
-              <span class="pill">Program pozycyjny</span>
-            </div>
+            <h4>Chcesz być szybszy i silniejszy</h4>
+            <p>Trenujesz w klubie, ale brakuje ci pracy nad szybkością, siłą nóg, motorycznością i kondycją specyficzną dla piłki.</p>
           </div>
-          <div class="hero-aside">
-            <div class="hero-stats-grid">
-              <div class="stat-block"><div class="val">0–10m</div><div class="label">Akceleracja</div></div>
-              <div class="stat-block"><div class="val">COD</div><div class="label">Zmiana kierunku</div></div>
-              <div class="stat-block"><div class="val">1v1</div><div class="label">Pojedynek</div></div>
-              <div class="stat-block"><div class="val">RT</div><div class="label">Reakcja / Timing</div></div>
-            </div>
-            <div class="hero-cta-card">
-              <div class="cta-title">Jak to działa?</div>
-              <p>Diagnoza → blok 4–8 tygodni → re-test → korekta. Każda sesja ma mikro-cel. Każdy blok kończy się raportem.</p>
-              <a class="btn btn-outline" href="#oferta" style="font-size:12px; padding:9px 18px; width:fit-content">Dowiedz się więcej →</a>
-            </div>
+        </div>
+        <div class="target-card">
+          <div class="target-icon">🎯</div>
+          <div>
+            <h4>Chcesz poprawić technikę</h4>
+            <p>Chcesz dopracować przyjęcia, drybbling, strzał lub grę jeden na jeden — w spokoju, 1:1, z natychmiastowym feedbackiem.</p>
+          </div>
+        </div>
+        <div class="target-card">
+          <div class="target-icon">📅</div>
+          <div>
+            <h4>Potrzebujesz planu tygodnia</h4>
+            <p>Trenujesz dużo, ale bez systemu. Potrzebujesz kogoś, kto ułoży ci plan treningowy, motoryczny i regeneracyjny spójny z kalendarzem klubu.</p>
+          </div>
+        </div>
+        <div class="target-card">
+          <div class="target-icon">📄</div>
+          <div>
+            <h4>Starasz się o przenosiny / akademię</h4>
+            <p>Chcesz wysłać się do akademii, agenta lub skautów. Potrzebujesz profesjonalnego piłkarskiego CV i profilu zawodnika.</p>
+          </div>
+        </div>
+        <div class="target-card">
+          <div class="target-icon">🔄</div>
+          <div>
+            <h4>Wracasz po kontuzji</h4>
+            <p>Wróciłeś do gry, ale chcesz wrócić dobrze — z planem regeneracji, budowania siły i stopniowego zwiększania obciążeń.</p>
+          </div>
+        </div>
+        <div class="target-card">
+          <div class="target-icon">📈</div>
+          <div>
+            <h4>Chcesz mierzalnego progresu</h4>
+            <p>Nie wystarczy ci poczucie, że trenujesz. Chcesz widzieć liczby, raporty i konkretne dane pokazujące twój rozwój z miesiąca na miesiąc.</p>
           </div>
         </div>
       </div>
-    </header>
+    </div>
+  </section>
 
-    <section id="oferta">
-      <div class="wrap">
-        <div class="section-header">
-          <div class="section-label">System pracy</div>
-          <h2 class="section-title">Co dokładnie dostajesz</h2>
-          <p class="section-desc">System pracy 1:1. Najpierw diagnoza, potem blok 4–8 tygodni, re-test i korekta.</p>
-        </div>
-        <div class="grid grid-3">
-          <div class="card"><span class="card-number">01</span><h3>Diagnostyka</h3><p>Cel + pozycja + priorytety na blok treningowy.</p><ul class="clean"><li>Profil sprintu i akceleracji</li><li>Hamowanie i zmiana kierunku</li><li>Stabilizacja + kontrola tułowia</li><li>Asymetrie i prewencja</li></ul></div>
-          <div class="card"><span class="card-number">02</span><h3>Trening 1:1</h3><p>Technika + motoryka + decyzyjność w zadaniach.</p><ul class="clean"><li>Progresje tygodniowe</li><li>Mikro-cele na każdą sesję</li><li>Dobór zadań pod pozycję</li></ul></div>
-          <div class="card"><span class="card-number">03</span><h3>Monitoring</h3><p>Mierzalny progres i jasne wnioski po każdym bloku.</p><ul class="clean"><li>Testy co 4 tygodnie</li><li>Raport blokowy</li><li>Feedback wideo (opcjonalnie)</li></ul></div>
-        </div>
+  <!-- ═══════════════ RAPORTY ═══════════════ -->
+  <section class="alt" id="raporty">
+    <div class="wrap">
+      <div class="section-header">
+        <div class="section-label">Raporty</div>
+        <h2 class="section-title">Raport rozwoju zawodnika</h2>
+        <p class="section-desc">Po każdym bloku współpracy dostajesz dokument z oceną zawodnika, danymi i planem dalszych działań.</p>
       </div>
-    </section>
-
-    <section id="pozycje">
-      <div class="wrap">
-        <div class="section-header">
-          <div class="section-label">Specjalizacja</div>
-          <h2 class="section-title">Wybierz pozycję</h2>
-          <p class="section-desc">Każda pozycja ma dedykowany program z własnym zestawem priorytetów i testów.</p>
-        </div>
-        <div class="grid grid-2">
-          <div class="card link-card" onclick="showView('skrzydlowy')">
-            <span class="pos-tag">Atak</span>
-            <h3>Skrzydłowy</h3>
-            <p>1v1 · sprint · zmiana kierunku · finalizacja / dośrodkowanie</p>
-            <div class="pill-row" style="margin-top:12px"><span class="pill">Akceleracja</span><span class="pill">COD</span><span class="pill">1v1</span></div>
-            <span class="mini-cta">Zobacz program →</span>
+      <div class="report-grid">
+        <div class="report-pillars">
+          <div class="report-pillar">
+            <div class="rp-num">01</div>
+            <div class="rp-content">
+              <h4>Rozwój sportowy</h4>
+              <p>Ocena progresu w obszarach: technika, motoryka, szybkość, siła, regeneracja i decyzyjność. Porównanie z punktem startowym i celami na blok.</p>
+            </div>
           </div>
-          <div class="card link-card" onclick="showView('boczny-obronca')">
-            <span class="pos-tag">Obrona</span>
-            <h3>Boczny obrońca</h3>
-            <p>Obrona 1v1 · sprint powrotny · timing · overlap</p>
-            <div class="pill-row" style="margin-top:12px"><span class="pill">Sprint</span><span class="pill">Timing</span><span class="pill">Overlap</span></div>
-            <span class="mini-cta">Zobacz program →</span>
+          <div class="report-pillar">
+            <div class="rp-num">02</div>
+            <div class="rp-content">
+              <h4>Metryki i obserwacje</h4>
+              <p>Konkretne dane z treningów: czasy, skuteczność, liczba powtórzeń, jakość pierwszego kontaktu. Obserwacje z sesji 1:1 i feedback z gry w klubie.</p>
+            </div>
           </div>
-          <div class="card link-card" onclick="showView('napastnik')">
-            <span class="pos-tag">Atak</span>
-            <h3>Napastnik</h3>
-            <p>Timing · start do piłki · first touch · wykończenie</p>
-            <div class="pill-row" style="margin-top:12px"><span class="pill">First Touch</span><span class="pill">Wykończenie</span><span class="pill">Timing</span></div>
-            <span class="mini-cta">Zobacz program →</span>
-          </div>
-          <div class="card link-card" onclick="showView('srodkowy-pomocnik')">
-            <span class="pos-tag">Środek pola</span>
-            <h3>Środkowy pomocnik</h3>
-            <p>Tempo · skanowanie · podanie pod presją · powtarzalne wysiłki</p>
-            <div class="pill-row" style="margin-top:12px"><span class="pill">Skanowanie</span><span class="pill">Presja</span><span class="pill">Tempo</span></div>
-            <span class="mini-cta">Zobacz program →</span>
+          <div class="report-pillar">
+            <div class="rp-num">03</div>
+            <div class="rp-content">
+              <h4>Plan dalszych działań</h4>
+              <p>Rekomendacje na kolejny blok: co kontynuować, co zintensyfikować, co zmienić. Priorytety rozwoju, nowe cele i wskazówki do samodzielnej pracy.</p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section id="pakiety">
-      <div class="wrap">
-        <div class="section-header">
-          <div class="section-label">Cennik</div>
-          <h2 class="section-title">Pakiety</h2>
-          <p class="section-desc">Wybierz pakiet pasujący do Twoich celów.</p>
-        </div>
-        <div class="grid grid-3">
-          <div class="package-card">
-            <div class="pkg-name">Basic</div>
-            <div class="price-amount">150 <span style="font-size:24px">zł</span></div>
-            <div class="price-sub">miesięcznie</div>
-            <p style="font-size:13px; color:var(--gray); margin-bottom:14px">1 trening tygodniowo + plan domowy + raport miesięczny.</p>
-            <div class="divider"></div>
-            <ul class="clean"><li>1× sesja 1:1 / tydzień</li><li>Plan tygodniowy</li><li>Mini-test co 4 tygodnie</li></ul>
-            <div class="divider"></div>
-            <button class="btn" type="button" data-select-package="BASIC">Wybieram Basic</button>
+        <div class="report-sample">
+          <div class="rs-label">Podgląd raportu</div>
+          <div class="rs-title">Raport blokowy zawodnika</div>
+          <div class="rs-metric">
+            <span>Szybkość 5m</span>
+            <div class="rs-bar-wrap"><div class="rs-bar"><div class="rs-bar-fill" style="width:78%"></div></div><div class="rs-bar-val">+7%</div></div>
           </div>
-          <div class="package-card featured">
-            <div class="pkg-name">Performance</div>
-            <div class="price-amount">200 <span style="font-size:24px">zł</span></div>
-            <div class="price-sub">miesięcznie</div>
-            <p style="font-size:13px; color:var(--gray); margin-bottom:14px">2 treningi tygodniowo + analiza wideo + testy co 4 tygodnie.</p>
-            <div class="divider"></div>
-            <ul class="clean"><li>2× sesja 1:1 / tydzień</li><li>Feedback 1× tydzień</li><li>Raport blokowy</li></ul>
-            <div class="divider"></div>
-            <button class="btn btn-primary" type="button" data-select-package="PERFORMANCE">Wybieram Performance</button>
+          <div class="rs-metric">
+            <span>Jakość przyjęcia</span>
+            <div class="rs-bar-wrap"><div class="rs-bar"><div class="rs-bar-fill" style="width:85%"></div></div><div class="rs-bar-val">B+</div></div>
           </div>
-          <div class="package-card">
-            <div class="pkg-name">Elite</div>
-            <div class="price-amount">300 <span style="font-size:24px">zł</span></div>
-            <div class="price-sub">miesięcznie</div>
-            <p style="font-size:13px; color:var(--gray); margin-bottom:14px">3 treningi tygodniowo + periodyzacja + monitoring ciągły.</p>
-            <div class="divider"></div>
-            <ul class="clean"><li>3× sesja 1:1 / tydzień</li><li>Periodyzacja 4–8 tyg.</li><li>Korekty planu w trakcie</li></ul>
-            <div class="divider"></div>
-            <button class="btn" type="button" data-select-package="ELITE">Wybieram Elite</button>
+          <div class="rs-metric">
+            <span>Skuteczność 1v1</span>
+            <div class="rs-bar-wrap"><div class="rs-bar"><div class="rs-bar-fill" style="width:62%"></div></div><div class="rs-bar-val">62%</div></div>
+          </div>
+          <div class="rs-metric">
+            <span>Regularność treningów</span>
+            <div class="rs-bar-wrap"><div class="rs-bar"><div class="rs-bar-fill" style="width:90%"></div></div><div class="rs-bar-val">9/10</div></div>
+          </div>
+          <div class="rs-metric">
+            <span>Ocena ogólna bloku</span>
+            <div class="rs-bar-wrap"><div class="rs-bar"><div class="rs-bar-fill" style="width:82%"></div></div><div class="rs-bar-val">A–</div></div>
+          </div>
+          <div style="margin-top:20px; padding:14px 16px; background:rgba(9,52,160,.07); border-radius:8px; font-size:12.5px; color:var(--gray); line-height:1.7;">
+            <strong style="color:var(--dark);font-size:12px;display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.08em;">Wniosek trenera</strong>
+            Zawodnik wykazał wyraźny progres w pracy bez piłki i w szybkości startowej. Priorytet na kolejny blok: praca nad decyzyjnością pod presją i przygotowaniem do gry w wąskich przestrzeniach.
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="kontakt">
-      <div class="wrap">
-        <div class="section-header">
-          <div class="section-label">Zapis</div>
-          <h2 class="section-title">Umów analizę wstępną</h2>
-          <p class="section-desc">Wypełnij formularz — zgłoszenie trafi bezpośrednio do nas.</p>
+  <!-- ═══════════════ O MNIE ═══════════════ -->
+  <section id="o-mnie">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-initials">NESTA<br>FA</div>
+          <div class="about-location">📍 Poznań, Polska</div>
+          <div class="about-tags">
+            <span class="about-tag">Trener 1:1</span>
+            <span class="about-tag">Przygotowanie motoryczne</span>
+            <span class="about-tag">Analiza gry</span>
+            <span class="about-tag">CD Leganés 🇪🇸</span>
+          </div>
         </div>
-        <div class="form-section">
-          <div class="form-card">
-            <form class="form" id="leadForm">
-              <div class="form-row">
-                <div><label for="name">Imię i nazwisko</label><input id="name" name="name" type="text" placeholder="Jan Kowalski" required /></div>
-                <div><label for="phone">Telefon</label><input id="phone" name="phone" type="tel" placeholder="+48 xxx xxx xxx" required /></div>
+        <div class="about-content">
+          <div class="section-label">O mnie</div>
+          <h2 class="section-title">Twórca NESTA FA</h2>
+          <p>NESTA FA to projekt stworzony przez trenera, który łączy doświadczenie boiskowe, przygotowanie motoryczne, analizę gry i indywidualną pracę z zawodnikami.</p>
+          <div class="about-highlight">
+            <p>⚽ Doświadczenie sportowe obejmuje grę w Hiszpanii — w CD Leganés, co dało solidne podstawy do rozumienia piłki na wyższym poziomie i przeniesienia tej wiedzy na pracę z zawodnikami w Polsce.</p>
+          </div>
+          <p>Wierzę, że każdy zawodnik — niezależnie od poziomu — zasługuje na indywidualne podejście poza standardowymi zajęciami klubowymi. NESTA FA istnieje po to, żeby wypełnić tę lukę: profesjonalnym planem, konkretną pracą i mierzalnymi wynikami.</p>
+          <p>Nie jesteśmy kolejną akademią. Jesteśmy partnerem w indywidualnym rozwoju zawodnika — od pierwszej diagnozy, przez regularne treningi, aż po piłkarskie CV gotowe do wysłania do skautów i akademii.</p>
+          <div class="cta-row" style="margin-top:28px;margin-bottom:0">
+            <a class="btn btn-primary" href="#zgloszenie">Skontaktuj się →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FAQ ═══════════════ -->
+  <section class="alt" id="faq">
+    <div class="wrap">
+      <div class="section-header" style="text-align:center; max-width:600px; margin:0 auto 52px;">
+        <div class="section-label" style="justify-content:center">FAQ</div>
+        <h2 class="section-title">Najczęściej zadawane pytania</h2>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Czy NESTA FA zastępuje trening w klubie?
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="faq-a"><p>Nie — NESTA FA działa jako uzupełnienie klubu, nie zamiennik. Zawodnik nadal trenuje z drużyną, a my pomagamy mu rozwijać się poza zajęciami grupowymi: pracować nad słabymi stronami, zwiększać motorykę, budować indywidualny plan tygodnia i monitorować progres. Klub daje grę zespołową. My dajemy indywidualny rozwój.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Czy trening siłowy jest bezpieczny dla młodych zawodników?
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="faq-a"><p>Tak — pod warunkiem, że jest prawidłowo zaplanowany i prowadzony. Przygotowanie motoryczne dla zawodników od 10. roku życia jest nie tylko bezpieczne, ale wręcz zalecane przez specjalistów sportowych. Nasze programy są dopasowane do wieku, etapu rozwoju i poziomu zawodnika — skupiamy się na stabilizacji, propriocepcji, koordynacji i progresywnym budowaniu siły bez przeciążania układu kostno-stawowego.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Czy można zacząć od jednej konsultacji / audytu?
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="faq-a"><p>Tak — i to jest nawet nasz rekomendowany punkt startowy. NESTA Football Audit (199 zł) to jednorazowa analiza zawodnika bez żadnych zobowiązań do dalszej współpracy. Dostajesz raport z oceną i rekomendacjami. Potem sam decydujesz, czy chcesz kontynuować.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Czy robicie piłkarskie CV dla zawodników?
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="faq-a"><p>Tak — to jedna z naszych głównych usług. NESTA Player CV (149–299 zł) to profesjonalne CV sportowe gotowe do wysłania do akademii, skautów i agentów. Zawiera profil pozycji, opis stylu gry, mocne strony, cele i — w wersji premium — materiały wideo. Pomagamy też zawodnikom w wysyłce i kontakcie z klubami.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Czy pracujecie tylko z dziećmi w wieku 8–13 lat?
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <div class="faq-a"><p>Nie — pracujemy z zawodnikami w wieku 10–20 lat. Mamy doświadczenie zarówno z młodszymi zawodnikami na etapie fundamentów technicznych, jak i ze starszymi — którzy przygotowują się do przenosin, szukają akademii, lub chcą podnieść swój poziom przed ważnymi sprawdzianami sportowymi.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CTA BANNER ═══════════════ -->
+  <section style="padding:80px 0; background:#fff;">
+    <div class="wrap">
+      <div class="cta-banner">
+        <div style="position:relative;z-index:1;">
+          <h2>Gotowy na indywidualny<br>plan zawodnika?</h2>
+          <p>Zacznij od jednorazowego audytu lub od razu umów się na trening. Bez umów, bez minimalnego okresu — tylko konkretna praca.</p>
+        </div>
+        <div class="cta-banner-btns">
+          <a class="btn btn-accent" href="#zgloszenie">Umów audyt — 199 zł</a>
+          <a class="btn" href="#oferta" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25);color:#fff">Zobacz ofertę</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ZGŁOSZENIE ═══════════════ -->
+  <section class="alt" id="zgloszenie">
+    <div class="wrap">
+      <div class="section-header">
+        <div class="section-label">Zgłoszenie</div>
+        <h2 class="section-title">Umów audyt zawodnika</h2>
+        <p class="section-desc">Wypełnij formularz — skontaktujemy się z tobą w ciągu 24 godzin i ustalimy szczegóły.</p>
+      </div>
+      <div class="form-section">
+        <div class="form-card">
+          <div class="form-title">Formularz zgłoszeniowy</div>
+          <div class="form-subtitle">Wybierz usługę i opisz krótko sytuację zawodnika.</div>
+          <form class="form" id="leadForm">
+            <div class="form-row">
+              <div><label for="name">Imię i nazwisko</label><input id="name" name="name" type="text" placeholder="Jan Kowalski" required /></div>
+              <div><label for="phone">Telefon</label><input id="phone" name="phone" type="tel" placeholder="+48 xxx xxx xxx" required /></div>
+            </div>
+            <div class="form-row">
+              <div><label for="age">Wiek zawodnika</label><input id="age" name="age" type="number" min="8" max="25" placeholder="np. 15" required /></div>
+              <div>
+                <label for="position">Pozycja</label>
+                <select id="position" name="position">
+                  <option value="" disabled selected>Wybierz pozycję</option>
+                  <option>Bramkarz</option><option>Środkowy obrońca</option><option>Boczny obrońca</option>
+                  <option>Środkowy pomocnik</option><option>Defensywny pomocnik</option><option>Skrzydłowy</option>
+                  <option>Ofensywny pomocnik</option><option>Napastnik</option>
+                </select>
               </div>
-              <div class="form-row">
-                <div><label for="age">Wiek</label><input id="age" name="age" type="number" min="6" max="45" placeholder="np. 17" required /></div>
-                <div>
-                  <label for="position">Pozycja</label>
-                  <select id="position" name="position" required>
-                    <option value="" disabled selected>Wybierz pozycję</option>
-                    <option>Skrzydłowy</option><option>Boczny obrońca</option><option>Napastnik</option><option>Środkowy pomocnik</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-row">
-                <div>
-                  <label for="package">Pakiet</label>
-                  <select id="package" name="package" required>
-                    <option value="" disabled selected>Wybierz pakiet</option>
-                    <option>BASIC</option><option>PERFORMANCE</option><option>ELITE</option>
-                  </select>
-                </div>
-                <div><label for="city">Miasto</label><input id="city" name="city" type="text" value="Poznań" /></div>
-              </div>
-              <div><label for="goal">Cel</label><input id="goal" name="goal" type="text" placeholder="np. szybszy start, lepsze 1v1, testy" /></div>
-              <div><label for="notes">Dodatkowe informacje</label><textarea id="notes" name="notes" placeholder="np. kontuzje, klub, ile treningów w tygodniu"></textarea></div>
-              <button class="btn btn-primary" type="submit" style="width:100%; padding:14px; justify-content:center">Wyślij zgłoszenie →</button>
-              <p style="font-size:11px; color:var(--muted); text-align:center">Zgłoszenie zostanie wysłane bezpośrednio na naszą skrzynkę.</p>
-            </form>
-          </div>
-          <div class="info-card">
-            <div class="contact-info-title">Kontakt bezpośredni</div>
-            <div class="contact-lines">
-              <div class="contact-line"><div class="contact-icon">📱</div><div><small>Telefon</small><b>514 315 437</b></div></div>
-              <div class="contact-line"><div class="contact-icon">✉️</div><div><small>E-mail</small><b>nestafa52@gmail.com</b></div></div>
-              <div class="contact-line"><div class="contact-icon">📍</div><div><small>Lokalizacja</small><b>Poznań</b></div></div>
             </div>
-            <div class="divider"></div>
-            <div class="contact-info-title" style="margin-bottom:16px">Start współpracy</div>
-            <ol class="step-list">
-              <li class="step-item"><div class="step-num">1</div><div class="step-text"><strong>Konsultacja</strong><span>Cel, pozycja i priorytety na blok</span></div></li>
-              <li class="step-item"><div class="step-num">2</div><div class="step-text"><strong>Diagnostyka + mini testy</strong><span>Profil motoryczny i technika</span></div></li>
-              <li class="step-item"><div class="step-num">3</div><div class="step-text"><strong>Blok 4 tygodnie</strong><span>Plan + sesje + feedback</span></div></li>
-              <li class="step-item"><div class="step-num">4</div><div class="step-text"><strong>Re-test i korekta planu</strong><span>Raport + następny blok</span></div></li>
-            </ol>
+            <div>
+              <label for="service">Interesuje mnie</label>
+              <select id="service" name="service" required>
+                <option value="" disabled selected>Wybierz usługę</option>
+                <option>NESTA Football Audit (199 zł)</option>
+                <option>NESTA Performance Plan (499 zł/mies.)</option>
+                <option>NESTA Player CV (149–299 zł)</option>
+                <option>Trening 1:1 (120–200 zł/sesja)</option>
+                <option>Nie wiem jeszcze — chcę się dowiedzieć więcej</option>
+              </select>
+            </div>
+            <div><label for="club">Aktualny klub (opcjonalnie)</label><input id="club" name="club" type="text" placeholder="np. Warta Poznań U17" /></div>
+            <div><label for="goal">Główny cel</label><input id="goal" name="goal" type="text" placeholder="np. szybkość, technika, CV do akademii, plan tygodnia" /></div>
+            <div><label for="notes">Dodatkowe informacje</label><textarea id="notes" name="notes" placeholder="np. kontuzje, ile treningów w tygodniu, kiedy możesz zacząć"></textarea></div>
+            <button class="btn btn-primary" type="submit" style="width:100%; padding:15px; font-size:14px;">Wyślij zgłoszenie →</button>
+            <p style="font-size:11px; color:var(--muted); text-align:center">Odpiszemy w ciągu 24 h. Zgłoszenie trafia bezpośrednio do nas.</p>
+          </form>
+        </div>
+
+        <div class="info-card">
+          <div class="info-card-title">Kontakt bezpośredni</div>
+          <div class="contact-lines">
+            <div class="contact-line"><div class="contact-icon">📱</div><div><small>Telefon / WhatsApp</small><b>514 315 437</b></div></div>
+            <div class="contact-line"><div class="contact-icon">✉️</div><div><small>E-mail</small><b>nestafa52@gmail.com</b></div></div>
+            <div class="contact-line"><div class="contact-icon">📍</div><div><small>Trening stacjonarny</small><b>Poznań</b></div></div>
+          </div>
+          <div class="divider"></div>
+          <div class="info-card-title" style="margin-bottom:16px">Jak wygląda start?</div>
+          <ol class="step-list">
+            <li class="step-item"><div class="step-num">1</div><div class="step-text"><strong>Zgłoszenie</strong><span>Wypełniasz formularz lub piszesz bezpośrednio</span></div></li>
+            <li class="step-item"><div class="step-num">2</div><div class="step-text"><strong>Rozmowa</strong><span>Krótka rozmowa o sytuacji i celach zawodnika</span></div></li>
+            <li class="step-item"><div class="step-num">3</div><div class="step-text"><strong>Audyt lub trening</strong><span>Startujemy od diagnozy albo od razu od sesji 1:1</span></div></li>
+            <li class="step-item"><div class="step-num">4</div><div class="step-text"><strong>Plan i progres</strong><span>Regularny plan, feedback i raport z postępów</span></div></li>
+          </ol>
+          <div class="divider"></div>
+          <div style="background:var(--primary-light);border-radius:var(--radius-sm);padding:16px 18px;font-size:13px;color:var(--dark);">
+            <strong style="display:block;margin-bottom:5px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--primary);">Dobry pierwszy krok</strong>
+            Zacznij od Football Audit (199 zł) — jednorazowa diagnoza bez zobowiązań. Dostajesz raport i plan działań, a potem sam decydujesz co dalej.
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <footer>
-      <div class="footer-inner">
-        <div class="footer-brand">NESTA FA</div>
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand-block">
+          <div class="fb-name">NESTA FA</div>
+          <div class="fb-tagline">Indywidualny rozwój piłkarza poza klubem · Poznań</div>
+        </div>
         <div class="footer-links">
-          <a onclick="showView('home'); scrollTo(0,0)">Oferta</a>
-          <a onclick="showView('home', 'pozycje')">Pozycje</a>
-          <a onclick="showView('home', 'pakiety')">Pakiety</a>
-          <a onclick="showView('home', 'kontakt')">Kontakt</a>
+          <a href="#oferta">Oferta</a>
+          <a href="#jak-dzialamy">Jak działamy</a>
+          <a href="#dla-kogo">Dla kogo</a>
+          <a href="#raporty">Raporty</a>
+          <a href="#o-mnie">O mnie</a>
+          <a href="#faq">FAQ</a>
+          <a href="#zgloszenie">Zgłoszenie</a>
         </div>
-        <div class="footer-copy">© <span id="year"></span> NESTA FA · Poznań · Treningi indywidualne</div>
       </div>
-    </footer>
-  </div><!-- /view-home -->
-
-
-  <!-- ═══════════════════ POSITION VIEW TEMPLATE ═══════════════════ -->
-
-  <!-- SKRZYDŁOWY -->
-  <div class="view" id="view-skrzydlowy">
-    <header class="pos-hero">
-      <div class="pos-hero-wrap">
-        <span class="pos-tag">Program pozycyjny · Atak</span>
-        <h1>Program: <em>Skrzydłowy</em></h1>
-        <p class="pos-hero-sub">Rozwój akceleracji, 1v1, zmiany kierunku i skuteczności w ostatniej tercji. 4 tygodnie · 3 jednostki tygodniowo.</p>
-        <div class="pill-row"><span class="pill">Akceleracja</span><span class="pill">COD</span><span class="pill">1v1</span><span class="pill">Finalizacja</span><span class="pill">Dośrodkowanie</span></div>
-      </div>
-    </header>
-    <div class="pos-content">
-      <div class="wrap">
-        <div class="grid grid-2">
-          <div class="card"><div class="card-label">Główne założenia</div><h3>Priorytety programu</h3><ul class="items"><li>Akceleracja 5–15 m i start na bodziec</li><li>COD: hamowanie + zmiana kierunku bez utraty dynamiki</li><li>1v1: zwody w prędkości meczowej</li><li>Finalizacja: zejście do środka + strzał</li><li>Dośrodkowanie w pełnym biegu</li></ul></div>
-          <div class="card"><div class="card-label">Co dostajesz</div><h3>Zawartość programu</h3><ul class="items"><li>4 tygodnie · 3 jednostki / tydzień</li><li>Opisy ćwiczeń + wskazówki techniczne</li><li>Progresje + błędy i korekty</li><li>System mierzenia progresu + arkusz</li><li>Checklistę meczową</li></ul></div>
-          <div class="card"><div class="card-label">Struktura</div><h3>Struktura jednostki</h3><ul class="items"><li>Aktywacja motoryczna</li><li>Element techniczno-dynamiczny</li><li>Sytuacje 1v1</li><li>Finalizacja pod zmęczeniem</li><li>Test / metryka + zapis</li></ul></div>
-          <div class="card"><div class="card-label">Pomiar progresu</div><h3>Jak mierzysz progres</h3><ul class="items"><li>Czas 5 m i 10 m</li><li>Skuteczność 1v1 (%)</li><li>Celność dośrodkowań</li><li>Skuteczność strzałów</li><li>Wideo: 1 klip / tydzień do samoanalizy</li></ul></div>
-        </div>
-        <div class="cta-banner">
-          <div><h3>Gotowy na trening 1:1?</h3><p>Umów analizę wstępną i zacznij program dopasowany do pozycji.</p></div>
-          <div class="cta-banner-btns">
-            <button class="btn" onclick="showView('home', 'pozycje')">Inne pozycje</button>
-            <button class="btn btn-primary" onclick="showView('home', 'kontakt')">Umów analizę →</button>
-          </div>
-        </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">© <span id="year"></span> NESTA FA · Poznań · Indywidualny trening piłkarski</div>
+        <div style="font-size:12px;color:#64748b">nestafa52@gmail.com · 514 315 437</div>
       </div>
     </div>
-    <footer><div class="footer-inner"><div class="footer-brand">NESTA FA</div><div class="footer-copy">© <span class="yr"></span> NESTA FA · Poznań · Treningi indywidualne</div></div></footer>
-  </div>
-
-  <!-- BOCZNY OBROŃCA -->
-  <div class="view" id="view-boczny-obronca">
-    <header class="pos-hero">
-      <div class="pos-hero-wrap">
-        <span class="pos-tag">Program pozycyjny · Obrona</span>
-        <h1>Program: <em>Boczny obrońca</em></h1>
-        <p class="pos-hero-sub">Sprint powrotny, defensywa 1v1, timing wejścia do ataku i jakość dośrodkowań. 4 tygodnie · 3 jednostki tygodniowo.</p>
-        <div class="pill-row"><span class="pill">Sprint powrotny</span><span class="pill">Obrona 1v1</span><span class="pill">Timing</span><span class="pill">Overlap</span><span class="pill">Dośrodkowanie</span></div>
-      </div>
-    </header>
-    <div class="pos-content">
-      <div class="wrap">
-        <div class="grid grid-2">
-          <div class="card"><div class="card-label">Główne założenia</div><h3>Priorytety programu</h3><ul class="items"><li>Sprint powrotny i powtarzalność wysiłku</li><li>Obrona 1v1: kąty, odcięcie, cierpliwość</li><li>Timing doskoku / wyjścia oraz asekuracja</li><li>Podłączenie do ataku i dośrodkowanie</li><li>Fazy przejściowe: reakcja po stracie / zysku</li></ul></div>
-          <div class="card"><div class="card-label">Co dostajesz</div><h3>Zawartość programu</h3><ul class="items"><li>4 tygodnie · 3 jednostki / tydzień</li><li>Progresje sprintu i hamowania</li><li>Bloki defensywne 1v1</li><li>Wytyczne dośrodkowań (cele i kryteria)</li><li>Arkusz progresu + testy kontrolne</li></ul></div>
-          <div class="card"><div class="card-label">Struktura</div><h3>Struktura jednostki</h3><ul class="items"><li>Aktywacja + prewencja (stabilizacja biodro / kolano)</li><li>Sprint liniowy i powrotny</li><li>Defensywa 1v1 (pozycja + praca nóg)</li><li>Wejście w atak + dośrodkowanie</li><li>Test / metryka + zapis</li></ul></div>
-          <div class="card"><div class="card-label">Pomiar progresu</div><h3>Jak mierzysz progres</h3><ul class="items"><li>Czas 20–30 m</li><li>Skuteczność odbiorów / odbicia (%)</li><li>Wygrane pojedynki 1v1</li><li>Celność dośrodkowań (na strefę)</li><li>Powtarzalność (spadek czasu między próbami)</li></ul></div>
-        </div>
-        <div class="cta-banner">
-          <div><h3>Gotowy na trening 1:1?</h3><p>Umów analizę wstępną i zacznij program dopasowany do pozycji.</p></div>
-          <div class="cta-banner-btns">
-            <button class="btn" onclick="showView('home', 'pozycje')">Inne pozycje</button>
-            <button class="btn btn-primary" onclick="showView('home', 'kontakt')">Umów analizę →</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <footer><div class="footer-inner"><div class="footer-brand">NESTA FA</div><div class="footer-copy">© <span class="yr"></span> NESTA FA · Poznań · Treningi indywidualne</div></div></footer>
-  </div>
-
-  <!-- NAPASTNIK -->
-  <div class="view" id="view-napastnik">
-    <header class="pos-hero">
-      <div class="pos-hero-wrap">
-        <span class="pos-tag">Program pozycyjny · Atak</span>
-        <h1>Program: <em>Napastnik</em></h1>
-        <p class="pos-hero-sub">Timing, pierwszy kontakt i wykończenie pod presją. 4 tygodnie · 3 jednostki tygodniowo.</p>
-        <div class="pill-row"><span class="pill">Timing</span><span class="pill">First Touch</span><span class="pill">Wykończenie</span><span class="pill">Strzał</span><span class="pill">Gra plecami</span></div>
-      </div>
-    </header>
-    <div class="pos-content">
-      <div class="wrap">
-        <div class="grid grid-2">
-          <div class="card"><div class="card-label">Główne założenia</div><h3>Priorytety programu</h3><ul class="items"><li>Timing startu do piłki i atakowanie przestrzeni</li><li>First touch kierunkowy w polu karnym</li><li>Wykończenie po 1–2 kontaktach</li><li>Strzał pod presją czasu i przeciwnika</li><li>Gra plecami: utrzymanie + odegranie</li></ul></div>
-          <div class="card"><div class="card-label">Co dostajesz</div><h3>Zawartość programu</h3><ul class="items"><li>4 tygodnie · 3 jednostki / tydzień</li><li>Bloki timingu i ruchu bez piłki</li><li>First touch + przygotowanie strzału</li><li>Warianty wykończenia (kąty / odległości)</li><li>Arkusz skuteczności + checklisty</li></ul></div>
-          <div class="card"><div class="card-label">Struktura</div><h3>Struktura jednostki</h3><ul class="items"><li>Aktywacja + mobilność bioder</li><li>Ruch bez piłki (timing)</li><li>First touch → strzał</li><li>Wykończenie pod zmęczeniem</li><li>Test / metryka + zapis</li></ul></div>
-          <div class="card"><div class="card-label">Pomiar progresu</div><h3>Jak mierzysz progres</h3><ul class="items"><li>Skuteczność strzałów (%)</li><li>Czas od podania do strzału</li><li>Jakość first touch (kierunek / odległość)</li><li>Skuteczność w oknie czasowym (np. 2 s)</li><li>Wideo: analiza decyzji w polu karnym</li></ul></div>
-        </div>
-        <div class="cta-banner">
-          <div><h3>Gotowy na trening 1:1?</h3><p>Umów analizę wstępną i zacznij program dopasowany do pozycji.</p></div>
-          <div class="cta-banner-btns">
-            <button class="btn" onclick="showView('home', 'pozycje')">Inne pozycje</button>
-            <button class="btn btn-primary" onclick="showView('home', 'kontakt')">Umów analizę →</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <footer><div class="footer-inner"><div class="footer-brand">NESTA FA</div><div class="footer-copy">© <span class="yr"></span> NESTA FA · Poznań · Treningi indywidualne</div></div></footer>
-  </div>
-
-  <!-- ŚRODKOWY POMOCNIK -->
-  <div class="view" id="view-srodkowy-pomocnik">
-    <header class="pos-hero">
-      <div class="pos-hero-wrap">
-        <span class="pos-tag">Program pozycyjny · Środek pola</span>
-        <h1>Program: <em>Środkowy pomocnik</em></h1>
-        <p class="pos-hero-sub">Skanowanie, tempo gry i kontrola decyzji w małej przestrzeni. 4 tygodnie · 3 jednostki tygodniowo.</p>
-        <div class="pill-row"><span class="pill">Skanowanie</span><span class="pill">Tempo gry</span><span class="pill">Podania progresywne</span><span class="pill">Presja</span><span class="pill">Przyjęcie kierunkowe</span></div>
-      </div>
-    </header>
-    <div class="pos-content">
-      <div class="wrap">
-        <div class="grid grid-2">
-          <div class="card"><div class="card-label">Główne założenia</div><h3>Priorytety programu</h3><ul class="items"><li>Skanowanie przed przyjęciem (informacja → decyzja)</li><li>Przyjęcie kierunkowe w presji</li><li>Tempo gry: przyspiesz / zwolnij we właściwym momencie</li><li>Podania progresywne i zmiana strony</li><li>Ustawienie względem linii podania i kąty wsparcia</li></ul></div>
-          <div class="card"><div class="card-label">Co dostajesz</div><h3>Zawartość programu</h3><ul class="items"><li>4 tygodnie · 3 jednostki / tydzień</li><li>Ćwiczenia percepcyjne (skanowanie)</li><li>Gra w małej przestrzeni (kontrola + decyzja)</li><li>Progresje trudności + kryteria jakości</li><li>Arkusz metryk i checklisty meczowe</li></ul></div>
-          <div class="card"><div class="card-label">Struktura</div><h3>Struktura jednostki</h3><ul class="items"><li>Aktywacja + kontrola ruchu</li><li>Skanowanie + bodźce decyzyjne</li><li>Przyjęcie → podanie (progresywne)</li><li>Tempo gry w ograniczeniach</li><li>Test / metryka + zapis</li></ul></div>
-          <div class="card"><div class="card-label">Pomiar progresu</div><h3>Jak mierzysz progres</h3><ul class="items"><li>Liczba skanów przed przyjęciem (cel: wzrost)</li><li>Jakość pierwszego kontaktu (kierunek / odległość)</li><li>Skuteczność podań progresywnych (%)</li><li>Czas decyzji pod presją (okno czasowe)</li><li>Wideo: 1 sytuacja / tydzień – ocena decyzji</li></ul></div>
-        </div>
-        <div class="cta-banner">
-          <div><h3>Gotowy na trening 1:1?</h3><p>Umów analizę wstępną i zacznij program dopasowany do pozycji.</p></div>
-          <div class="cta-banner-btns">
-            <button class="btn" onclick="showView('home', 'pozycje')">Inne pozycje</button>
-            <button class="btn btn-primary" onclick="showView('home', 'kontakt')">Umów analizę →</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <footer><div class="footer-inner"><div class="footer-brand">NESTA FA</div><div class="footer-copy">© <span class="yr"></span> NESTA FA · Poznań · Treningi indywidualne</div></div></footer>
-  </div>
+  </footer>
 
   <div class="toast" id="toast"></div>
 
   <script>
     // ─── YEAR ───
-    const yr = new Date().getFullYear();
-    document.getElementById("year").textContent = yr;
-    document.querySelectorAll(".yr").forEach(el => el.textContent = yr);
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    // ─── VIEW SWITCHER ───
-    function showView(name, scrollTo) {
-      // hide all
-      document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
-      // show target
-      const target = document.getElementById("view-" + name);
-      if (target) target.classList.add("active");
-
-      const isHome = name === "home";
-
-      // nav: toggle links vs back button
-      document.getElementById("navHome").style.display = isHome ? "" : "none";
-      document.getElementById("navPos").style.display  = isHome ? "none" : "flex";
-
-      // nav CTA href
-      const cta = document.getElementById("navCta");
-      if (isHome) {
-        cta.setAttribute("href", "#kontakt");
-        cta.onclick = null;
-      } else {
-        cta.removeAttribute("href");
-        cta.onclick = () => showView("home", "kontakt");
-      }
-
-      // brand sub
-      const labels = { home: "Treningi indywidualne", skrzydlowy: "Program pozycyjny", "boczny-obronca": "Program pozycyjny", napastnik: "Program pozycyjny", "srodkowy-pomocnik": "Program pozycyjny" };
-      document.getElementById("navSub").textContent = labels[name] || "Treningi indywidualne";
-
-      window.scrollTo({ top: 0, behavior: "instant" });
-
-      if (scrollTo) {
-        setTimeout(() => {
-          const el = document.getElementById(scrollTo);
-          if (el) el.scrollIntoView({ behavior: "smooth" });
-        }, 50);
-      }
-    }
-
-    // Nav scroll shadow
+    // ─── NAV SHADOW ───
     window.addEventListener("scroll", () => {
       document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 10);
     });
 
-    // ─── PACKAGE BUTTONS ───
-    document.querySelectorAll("[data-select-package]").forEach(btn => {
+    // ─── OFFER BUTTONS → select service in form ───
+    document.querySelectorAll("[data-select-service]").forEach(btn => {
       btn.addEventListener("click", () => {
-        const value = btn.getAttribute("data-select-package");
-        const select = document.getElementById("package");
-        if (select) select.value = value;
-        showToast("Wybrano pakiet: " + value);
-        showView("home", "kontakt");
+        const val = btn.getAttribute("data-select-service");
+        const sel = document.getElementById("service");
+        if (sel) sel.value = val;
+        document.getElementById("zgloszenie").scrollIntoView({ behavior: "smooth" });
+        showToast("Wybrano: " + val);
       });
     });
+
+    // ─── FAQ ───
+    function toggleFaq(el) {
+      const item = el.closest(".faq-item");
+      const isOpen = item.classList.contains("open");
+      document.querySelectorAll(".faq-item.open").forEach(i => i.classList.remove("open"));
+      if (!isOpen) item.classList.add("open");
+    }
 
     // ─── FORM ───
     const form = document.getElementById("leadForm");
     form?.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const submitBtn = form.querySelector('[type="submit"]');
-      const originalText = submitBtn.textContent;
-      submitBtn.textContent = "Wysyłanie...";
-      submitBtn.disabled = true;
+      const btn = form.querySelector('[type="submit"]');
+      const orig = btn.textContent;
+      btn.textContent = "Wysyłanie..."; btn.disabled = true;
       try {
-        const response = await fetch("https://formspree.io/f/meelwpnw", {
-          method: "POST",
-          body: new FormData(form),
-          headers: { Accept: "application/json" }
+        const res = await fetch("https://formspree.io/f/meelwpnw", {
+          method: "POST", body: new FormData(form), headers: { Accept: "application/json" }
         });
-        if (response.ok) {
+        if (res.ok) {
           showToast("✓ Zgłoszenie wysłane! Odezwiemy się wkrótce.");
           form.reset();
-          submitBtn.textContent = "✓ Wysłano!";
-          setTimeout(() => { submitBtn.textContent = originalText; submitBtn.disabled = false; }, 3000);
-        } else { throw new Error(); }
+          btn.textContent = "✓ Wysłano!";
+          setTimeout(() => { btn.textContent = orig; btn.disabled = false; }, 3000);
+        } else throw new Error();
       } catch {
-        showToast("Błąd wysyłania. Spróbuj ponownie lub zadzwoń bezpośrednio.");
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
+        showToast("Błąd. Napisz bezpośrednio: nestafa52@gmail.com");
+        btn.textContent = orig; btn.disabled = false;
       }
     });
 
@@ -707,10 +951,9 @@
     let toastTimer = null;
     function showToast(msg) {
       if (!toast) return;
-      toast.textContent = msg;
-      toast.classList.add("show");
+      toast.textContent = msg; toast.classList.add("show");
       clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toast.classList.remove("show"), 2800);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 3000);
     }
   </script>
 </body>
