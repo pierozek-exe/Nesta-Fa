@@ -79,7 +79,7 @@
     #navbar{
       position:fixed;top:0;left:0;right:0;z-index:200;
       height:var(--nav-h);
-      background:rgba(247,248,250,.9);
+      background:rgba(247,248,250,.96);
       backdrop-filter:blur(20px) saturate(1.6);
       -webkit-backdrop-filter:blur(20px) saturate(1.6);
       border-bottom:1px solid var(--border);
@@ -89,10 +89,12 @@
     .nav-inner{max-width:var(--max);margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;gap:0}
 
     .nav-brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
-    .nav-logo{width:34px;height:34px;background:var(--navy);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;letter-spacing:-.02em;flex-shrink:0}
+    .nav-logo{height:36px;width:auto;display:block;flex-shrink:0}
     .nav-name{font-size:16px;font-weight:800;color:var(--navy);letter-spacing:-.02em}
+    .nav-logo-wrap{display:none}
+    .nav-logo-img{display:none}
 
-    .nav-links{display:flex;align-items:center;gap:2px;margin-left:32px}
+    .nav-links{display:flex;align-items:center;gap:2px;margin-left:28px}
     .nav-links a{font-size:13px;font-weight:500;color:var(--ink2);padding:7px 11px;border-radius:7px;transition:all .15s;cursor:pointer}
     .nav-links a:hover,.nav-links a.active{color:var(--navy);background:rgba(7,27,61,.06)}
 
@@ -105,9 +107,9 @@
     .hamburger.open span:nth-child(2){opacity:0}
     .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-    .mobile-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:rgba(247,248,250,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:199;padding:16px 24px 24px}
+    .mobile-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:rgba(7,27,61,.98);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08);z-index:199;padding:16px 24px 24px}
     .mobile-menu.open{display:block}
-    .mobile-menu a{display:block;font-size:15px;font-weight:500;color:var(--ink);padding:12px 0;border-bottom:1px solid var(--border);cursor:pointer}
+    .mobile-menu a{display:block;font-size:15px;font-weight:500;color:rgba(255,255,255,.8);padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);cursor:pointer}
     .mobile-menu a:last-of-type{border-bottom:none}
     .mobile-menu .mob-cta{margin-top:16px}
 
@@ -255,7 +257,7 @@
     .form-grid-inner{display:grid;gap:16px}
     .f2c{display:grid;grid-template-columns:1fr 1fr;gap:14px}
     label{font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:6px}
-    input,select,textarea{width:100%;padding:11px 14px;background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-sm);color:var(--ink);font-family:var(--f);font-size:14px;outline:none;transition:border-color .15s,box-shadow .15s;-webkit-appearance:none}
+    input,select,textarea{width:100%;padding:11px 14px;background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-sm);color:var(--ink);font-family:var(--f);font-size:14px;outline:none;transition:border-color .15s,box-shadow .15s;-webkit-appearance:none;appearance:none}
     input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(11,95,255,.1)}
     textarea{min-height:90px;resize:vertical}
     select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px}
@@ -383,10 +385,11 @@
 
 <nav id="navbar">
   <div class="nav-inner">
-    <div class="nav-brand">
-      <div class="nav-logo">B</div>
-      <div class="nav-name">BallWise</div>
-    </div>
+    <div class="nav-brand" onclick="goTo('#hero')" style="cursor:pointer">
+        <div class="nav-logo-wrap">
+          <img src="logo-ballwise.jpg" alt="BallWise" class="nav-logo-img"/>
+        </div>
+      </div>
     <div class="nav-links" id="navLinks">
       <a onclick="goTo('#hero')">Start</a>
       <a onclick="goTo('#oferta')">Oferta</a>
@@ -933,7 +936,9 @@
   <div class="footer-in">
     <div class="footer-top">
       <div>
-        <div class="footer-brand">BallWise</div>
+        <div style="margin-bottom:14px">
+          <img src="logo-ballwise.jpg" alt="BallWise" style="height:56px;width:auto;border-radius:10px;display:block"/>
+        </div>
         <p class="footer-tag">Indywidualny rozwój piłkarza poza klubem.</p>
         <p class="footer-tag" style="margin-top:8px">Treningi na żywo tylko w Poznaniu. Analizy i plany dostępne online.</p>
       </div>
@@ -1121,4 +1126,3 @@ function showToast(msg) {
 </script>
 </body>
 </html>
-
