@@ -93,6 +93,7 @@
     .nav-name{font-size:16px;font-weight:800;color:var(--navy);letter-spacing:-.02em}
     .nav-logo-wrap{display:none}
     .nav-logo-img{display:none}
+    .nav-logo-text{font-size:18px;font-weight:800;color:var(--navy);letter-spacing:-.02em}
 
     .nav-links{display:flex;align-items:center;gap:2px;margin-left:28px}
     .nav-links a{font-size:13px;font-weight:500;color:var(--ink2);padding:7px 11px;border-radius:7px;transition:all .15s;cursor:pointer}
@@ -107,9 +108,9 @@
     .hamburger.open span:nth-child(2){opacity:0}
     .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-    .mobile-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:rgba(7,27,61,.98);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08);z-index:199;padding:16px 24px 24px}
+    .mobile-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:rgba(247,248,250,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:199;padding:16px 24px 24px}
     .mobile-menu.open{display:block}
-    .mobile-menu a{display:block;font-size:15px;font-weight:500;color:rgba(255,255,255,.8);padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);cursor:pointer}
+    .mobile-menu a{display:block;font-size:15px;font-weight:500;color:var(--ink);padding:12px 0;border-bottom:1px solid var(--border);cursor:pointer}
     .mobile-menu a:last-of-type{border-bottom:none}
     .mobile-menu .mob-cta{margin-top:16px}
 
@@ -342,6 +343,87 @@
     .bc-step span{font-size:12.5px;color:rgba(255,255,255,.5)}
 
     /* ═══════════════════════════════════════
+       BOOKING MODULE
+    ═══════════════════════════════════════ */
+    /* stepper */
+    .bk-stepper{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:40px;flex-wrap:wrap;gap:0}
+    .bk-step{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--ink3);transition:color .2s}
+    .bk-step.active{color:var(--navy)}
+    .bk-step.done{color:var(--blue)}
+    .bk-step-num{width:32px;height:32px;border-radius:50%;border:2px solid var(--border2);background:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--ink3);flex-shrink:0;transition:all .2s}
+    .bk-step.active .bk-step-num{border-color:var(--navy);background:var(--navy);color:#fff}
+    .bk-step.done .bk-step-num{border-color:var(--blue);background:var(--blue);color:#fff}
+    .bk-sep{width:48px;height:2px;background:var(--border);margin:0 8px;flex-shrink:0}
+    @media(max-width:480px){.bk-step span{display:none}.bk-sep{width:24px}}
+
+    /* card */
+    .bk-card{background:#fff;border:1.5px solid var(--border);border-radius:20px;box-shadow:var(--shadow-md);overflow:hidden;max-width:760px;margin:0 auto}
+    .bk-panel{display:none;padding:40px 40px 36px}
+    .bk-panel.active{display:block}
+    @media(max-width:600px){.bk-panel{padding:28px 20px 24px}}
+    .bk-panel-title{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:6px}
+    .bk-panel-sub{font-size:14px;color:var(--ink3);margin-bottom:28px}
+    .bk-nav{display:flex;align-items:center;justify-content:space-between;margin-top:32px;gap:12px}
+
+    /* goal cards */
+    .goal-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:4px}
+    @media(max-width:560px){.goal-grid{grid-template-columns:1fr}}
+    .goal-card{border:2px solid var(--border);border-radius:var(--r);padding:20px 18px;cursor:pointer;transition:all .2s;background:#fff;user-select:none}
+    .goal-card:hover{border-color:var(--blue);background:var(--blue-light)}
+    .goal-card.selected{border-color:var(--navy);background:rgba(7,27,61,.04);box-shadow:0 0 0 3px rgba(7,27,61,.08)}
+    .goal-icon{font-size:24px;margin-bottom:10px}
+    .goal-name{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.35}
+    .goal-desc{font-size:12.5px;color:var(--ink3);line-height:1.6}
+
+    /* calendar */
+    .cal-wrap{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r);padding:24px;margin-bottom:4px}
+    .cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+    .cal-nav{width:36px;height:36px;border:1.5px solid var(--border);background:#fff;border-radius:var(--r-sm);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--navy);transition:all .15s;font-family:var(--f)}
+    .cal-nav:hover{border-color:var(--blue);color:var(--blue)}
+    .cal-month-label{font-size:16px;font-weight:700;color:var(--navy)}
+    .cal-days-header{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:8px}
+    .cal-days-header span{font-size:11px;font-weight:700;color:var(--ink3);text-align:center;padding:4px 0;text-transform:uppercase;letter-spacing:.06em}
+    .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+    .cal-day{aspect-ratio:1;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;color:var(--ink3);cursor:default;transition:all .15s;position:relative;border:1.5px solid transparent}
+    .cal-day.empty{background:transparent}
+    .cal-day.past{color:var(--border2);background:transparent}
+    .cal-day.today{border-color:var(--border2);color:var(--navy);font-weight:700}
+    .cal-day.available{background:#fff;color:var(--navy);font-weight:600;cursor:pointer;border-color:var(--border)}
+    .cal-day.available:hover{border-color:var(--blue);background:var(--blue-light);color:var(--blue)}
+    .cal-day.available::after{content:'';position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:4px;height:4px;background:var(--blue);border-radius:50%}
+    .cal-day.selected{background:var(--navy);color:#fff;border-color:var(--navy);font-weight:700}
+    .cal-day.selected::after{background:#fff}
+
+    /* time slots */
+    .time-wrap{margin-top:20px;border-top:1.5px solid var(--border);padding-top:20px}
+    .time-label{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:14px}
+    .time-slots{display:flex;flex-wrap:wrap;gap:10px}
+    .time-slot{padding:10px 18px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:14px;font-weight:600;color:var(--navy);background:#fff;cursor:pointer;transition:all .18s}
+    .time-slot:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-light)}
+    .time-slot.selected{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .time-slot.unavailable{color:var(--border2);border-color:var(--border);cursor:not-allowed;background:var(--bg);text-decoration:line-through}
+
+    /* summary */
+    .bk-summary{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:18px 20px;margin-bottom:24px}
+    .bk-summary-row{display:flex;align-items:center;gap:12px;padding:7px 0;border-bottom:1px solid var(--border);font-size:14px}
+    .bk-summary-row:last-child{border-bottom:none}
+    .bk-sum-label{color:var(--ink3);font-weight:500;width:110px;flex-shrink:0}
+    .bk-sum-val{color:var(--navy);font-weight:600}
+
+    /* booking form */
+    .bk-form{display:grid;gap:16px;margin-bottom:4px}
+    .bk-field label{font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:6px}
+    .bk-field input,.bk-field textarea{width:100%;padding:12px 14px;background:#fff;border:1.5px solid var(--border);border-radius:var(--r-sm);color:var(--ink);font-family:var(--f);font-size:14px;outline:none;transition:border-color .15s;-webkit-appearance:none;appearance:none}
+    .bk-field input:focus,.bk-field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(11,95,255,.1)}
+    .bk-field textarea{min-height:80px;resize:vertical}
+
+    /* success */
+    .bk-success-wrap{text-align:center;padding:16px 0}
+    .bk-success-icon{width:72px;height:72px;background:rgba(22,163,74,.1);border:2px solid rgba(22,163,74,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;color:#16a34a;margin:0 auto 20px}
+    .bk-success-title{font-size:24px;font-weight:800;color:var(--navy);margin-bottom:10px}
+    .bk-success-msg{font-size:15px;color:var(--ink2);line-height:1.7;margin-bottom:28px;max-width:420px;margin-left:auto;margin-right:auto}
+
+    /* ═══════════════════════════════════════
        TOAST
     ═══════════════════════════════════════ */
     #toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:var(--navy);color:#fff;font-size:13px;font-weight:600;padding:12px 22px;border-radius:var(--r-sm);display:none;z-index:300;box-shadow:0 8px 24px rgba(7,27,61,.35);white-space:nowrap}
@@ -386,9 +468,7 @@
 <nav id="navbar">
   <div class="nav-inner">
     <div class="nav-brand" onclick="goTo('#hero')" style="cursor:pointer">
-        <div class="nav-logo-wrap">
-          <img src="logo-ballwise.jpg" alt="BallWise" class="nav-logo-img"/>
-        </div>
+        <div class="nav-logo-text">BallWise</div>
       </div>
     <div class="nav-links" id="navLinks">
       <a onclick="goTo('#hero')">Start</a>
@@ -843,92 +923,130 @@
   </div>
 </section>
 
-<section class="section" id="zgloszenie">
+<section class="section" id="zgloszenie" style="background:var(--white)">
   <div class="wrap">
-    <div class="section-hdr">
-      <div class="eyebrow">Kontakt</div>
-      <h2 class="h2">Umów rozmowę, trening albo analizę</h2>
-      <p class="lead text-muted">Wypełnij formularz, a odezwiemy się z propozycją kolejnego kroku.</p>
+    <div class="section-hdr center">
+      <div class="eyebrow">Rezerwacja konsultacji</div>
+      <h2 class="h2">Umów konsultację BallWise</h2>
+      <p class="lead text-muted">Nie musisz wypełniać długiego formularza. Wybierz cel rozmowy, termin i godzinę. W&nbsp;3&nbsp;krokach sprawdzimy, jak BallWise może pomóc w Twoim rozwoju piłkarskim.</p>
     </div>
-    <div class="form-section">
-      <div class="form-wrap">
-        <h3>Formularz zgłoszeniowy</h3>
-        <p class="form-sub">Zacznij od bezpłatnej rozmowy — lub od razu wybierz usługę, która Cię interesuje.</p>
-        <form class="form-grid-inner" id="mainForm" novalidate>
-          <div class="f2c">
-            <div><label for="f-name">Imię i nazwisko zawodnika *</label><input id="f-name" name="name" type="text" placeholder="Jan Kowalski" required/></div>
-            <div><label for="f-age">Wiek zawodnika *</label><input id="f-age" name="age" type="number" min="8" max="25" placeholder="np. 15" required/></div>
+
+    <!-- STEPPER -->
+    <div class="bk-stepper" id="bkStepper">
+      <div class="bk-step active" data-s="1"><div class="bk-step-num">1</div><span>Cel rozmowy</span></div>
+      <div class="bk-sep"></div>
+      <div class="bk-step" data-s="2"><div class="bk-step-num">2</div><span>Termin</span></div>
+      <div class="bk-sep"></div>
+      <div class="bk-step" data-s="3"><div class="bk-step-num">3</div><span>Dane i potwierdzenie</span></div>
+    </div>
+
+    <!-- BOOKING CARD -->
+    <div class="bk-card">
+
+      <!-- ── STEP 1: GOAL ── -->
+      <div class="bk-panel active" id="bkStep1">
+        <h3 class="bk-panel-title">Jaki jest cel Twojej konsultacji?</h3>
+        <p class="bk-panel-sub">Wybierz opcję, która najbardziej pasuje do Twojej sytuacji.</p>
+        <div class="goal-grid">
+          <div class="goal-card" data-goal="Lepszy plan treningowy" onclick="selectGoal(this)">
+            <div class="goal-icon">📋</div>
+            <div class="goal-name">Chcę lepszy plan treningowy</div>
+            <div class="goal-desc">Dla zawodników, którzy chcą trenować mądrzej, bez chaosu i przeciążenia.</div>
           </div>
-          <div class="f2c">
-            <div>
-              <label for="f-pos">Pozycja</label>
-              <select id="f-pos" name="position">
-                <option value="">Wybierz pozycję</option>
-                <option>Bramkarz</option><option>Środkowy obrońca</option><option>Boczny obrońca</option>
-                <option>Defensywny pomocnik</option><option>Środkowy pomocnik</option><option>Ofensywny pomocnik</option>
-                <option>Skrzydłowy</option><option>Napastnik</option>
-              </select>
-            </div>
-            <div><label for="f-city">Miasto</label><input id="f-city" name="city" type="text" placeholder="np. Poznań, Warszawa"/></div>
+          <div class="goal-card" data-goal="Analiza mojego rozwoju" onclick="selectGoal(this)">
+            <div class="goal-icon">📊</div>
+            <div class="goal-name">Chcę analizę mojego rozwoju</div>
+            <div class="goal-desc">Dla osób, które chcą wiedzieć, co poprawić: szybkość, siłę, wytrzymałość, technikę lub regenerację.</div>
           </div>
-          <div><label for="f-club">Klub / poziom gry</label><input id="f-club" name="club" type="text" placeholder="np. Warta Poznań U17"/></div>
-          <div><label for="f-goal">Główny cel</label><input id="f-goal" name="goal" type="text" placeholder="np. szybkość, technika, analiza tygodnia"/></div>
-          <div>
-            <label for="f-svc">Wybrana usługa *</label>
-            <select id="f-svc" name="service" required>
-              <option value="">Wybierz usługę</option>
-              <option>Bezpłatna rozmowa startowa</option>
-              <option>Trening diagnostyczny 1:1</option>
-              <option>Trening diagnostyczny + raport</option>
-              <option>Trening indywidualny 1:1</option>
-              <option>Pakiet 4 treningów</option>
-              <option>Program specjalistyczny</option>
-              <option>Analiza wideo</option>
-              <option>Analiza wideo + raport</option>
-              <option>Analiza tygodnia treningowego</option>
-              <option>Plan treningowy 4 tygodnie</option>
-              <option>Analiza tygodnia + plan</option>
-              <option>Plan + konsultacja kontrolna</option>
-            </select>
+          <div class="goal-card" data-goal="Sprawdzenie czy BallWise jest dla mnie" onclick="selectGoal(this)">
+            <div class="goal-icon">💬</div>
+            <div class="goal-name">Chcę sprawdzić, czy BallWise jest dla mnie</div>
+            <div class="goal-desc">Krótka rozmowa wstępna i dopasowanie rozwiązania do zawodnika.</div>
           </div>
-          <div>
-            <label for="f-form">Forma współpracy</label>
-            <select id="f-form" name="forma">
-              <option value="">Wybierz formę</option>
-              <option>Poznań (stacjonarnie)</option>
-              <option>Online</option>
-              <option>Nie wiem jeszcze</option>
-            </select>
+          <div class="goal-card" data-goal="Jestem rodzicem zawodnika" onclick="selectGoal(this)">
+            <div class="goal-icon">👨‍👦</div>
+            <div class="goal-name">Jestem rodzicem zawodnika</div>
+            <div class="goal-desc">Dla rodziców, którzy chcą lepiej zaplanować rozwój dziecka i uniknąć przypadkowego treningu.</div>
           </div>
-          <div class="f2c">
-            <div><label for="f-phone">Numer telefonu *</label><input id="f-phone" name="phone" type="tel" placeholder="+48 xxx xxx xxx"/></div>
-            <div><label for="f-email">E-mail</label><input id="f-email" name="email" type="email" placeholder="email@example.com"/></div>
-          </div>
-          <div><label for="f-msg">Wiadomość dodatkowa</label><textarea id="f-msg" name="message" placeholder="np. kontuzje, treningi w tygodniu, kiedy możesz zacząć"></textarea></div>
-          <div id="form-err" style="font-size:13px;color:#dc2626;display:none;padding:10px 14px;background:#fef2f2;border-radius:var(--r-sm);border:1px solid #fecaca"></div>
-          <button class="btn btn-primary submit-btn" type="submit">Wyślij zgłoszenie →</button>
-          <p class="form-note">Odpiszemy w ciągu 24 h. Dane trafiają bezpośrednio do nas.</p>
-          <div class="form-success" id="formSuccess">Dziękujemy za zgłoszenie. Odezwę się możliwie szybko i pomogę dobrać najlepszy kolejny krok.</div>
-        </form>
+        </div>
+        <div class="bk-nav">
+          <span></span>
+          <button class="btn btn-primary" id="toStep2Btn" onclick="goStep(2)" disabled>Wybierz termin →</button>
+        </div>
       </div>
 
-      <div class="contact-aside">
-        <h4>Kontakt bezpośredni</h4>
-        <div class="c-line"><div class="c-dot">📱</div><div><small>Telefon / WhatsApp</small><b>514 315 437</b></div></div>
-        <div class="c-line"><div class="c-dot">✉️</div><div><small>E-mail</small><b>nestafa52@gmail.com</b></div></div>
-        <div class="c-line"><div class="c-dot">📍</div><div><small>Treningi stacjonarne</small><b>Poznań</b></div></div>
-        <div class="c-line"><div class="c-dot">🌍</div><div><small>Analizy i plany</small><b>Online — cała Polska</b></div></div>
-        <hr/>
-        <h4 style="margin-top:4px">Jak wygląda start?</h4>
-        <div style="display:flex;flex-direction:column;gap:0">
-          <div class="step" style="padding:14px 0"><div class="step-num" style="width:30px;height:30px;font-size:13px">1</div><div class="step-text"><strong style="font-size:14px">Wypełniasz formularz</strong><span style="font-size:12.5px">Lub dzwonisz / piszesz bezpośrednio</span></div></div>
-          <div class="step" style="padding:14px 0"><div class="step-num" style="width:30px;height:30px;font-size:13px">2</div><div class="step-text"><strong style="font-size:14px">Krótka rozmowa</strong><span style="font-size:12.5px">Ustalamy cel, formę i dobieramy usługę</span></div></div>
-          <div class="step" style="padding:14px 0"><div class="step-num" style="width:30px;height:30px;font-size:13px">3</div><div class="step-text"><strong style="font-size:14px">Trening, analiza lub plan</strong><span style="font-size:12.5px">Zależnie od wybranej usługi</span></div></div>
-          <div class="step" style="padding:14px 0;border-bottom:none"><div class="step-num" style="width:30px;height:30px;font-size:13px">4</div><div class="step-text"><strong style="font-size:14px">Wiesz, co robić dalej</strong><span style="font-size:12.5px">Konkretny kierunek i rekomendacja</span></div></div>
+      <!-- ── STEP 2: CALENDAR ── -->
+      <div class="bk-panel" id="bkStep2">
+        <h3 class="bk-panel-title">Wybierz datę i godzinę</h3>
+        <p class="bk-panel-sub">Dostępne terminy zaznaczone na niebiesko. Kliknij datę, a następnie godzinę.</p>
+        <div class="cal-wrap">
+          <!-- Month header -->
+          <div class="cal-header">
+            <button class="cal-nav" onclick="changeMonth(-1)">&#8249;</button>
+            <div class="cal-month-label" id="calMonthLabel"></div>
+            <button class="cal-nav" onclick="changeMonth(1)">&#8250;</button>
+          </div>
+          <!-- Day names -->
+          <div class="cal-days-header">
+            <span>Pn</span><span>Wt</span><span>Śr</span><span>Cz</span><span>Pt</span><span>Sb</span><span>Nd</span>
+          </div>
+          <!-- Day grid -->
+          <div class="cal-grid" id="calGrid"></div>
+          <!-- Time slots -->
+          <div class="time-wrap" id="timeWrap" style="display:none">
+            <div class="time-label" id="timeLabel"></div>
+            <div class="time-slots" id="timeSlots"></div>
+          </div>
         </div>
-        <div class="sidebar-note"><strong>Dobry start</strong><p>Zacznij od bezpłatnej rozmowy (0 zł) — bez presji i bez zobowiązań.</p></div>
+        <div class="bk-nav">
+          <button class="btn btn-outline" onclick="goStep(1)">← Wróć</button>
+          <button class="btn btn-primary" id="toStep3Btn" onclick="goStep(3)" disabled>Dalej →</button>
+        </div>
       </div>
-    </div>
+
+      <!-- ── STEP 3: DATA ── -->
+      <div class="bk-panel" id="bkStep3">
+        <h3 class="bk-panel-title">Potwierdź termin i wpisz dane</h3>
+        <!-- Summary -->
+        <div class="bk-summary" id="bkSummary"></div>
+        <!-- Form -->
+        <div class="bk-form">
+          <div class="bk-field">
+            <label for="bk-name">Imię i nazwisko *</label>
+            <input id="bk-name" type="text" placeholder="Jan Kowalski" autocomplete="name"/>
+          </div>
+          <div class="bk-field">
+            <label for="bk-email">E-mail *</label>
+            <input id="bk-email" type="email" placeholder="jan@example.com" autocomplete="email"/>
+          </div>
+          <div class="bk-field">
+            <label for="bk-phone">Numer telefonu <span style="color:var(--ink3);font-weight:400">(opcjonalnie)</span></label>
+            <input id="bk-phone" type="tel" placeholder="+48 xxx xxx xxx" autocomplete="tel"/>
+          </div>
+          <div class="bk-field">
+            <label for="bk-msg">Krótka wiadomość <span style="color:var(--ink3);font-weight:400">(opcjonalnie)</span></label>
+            <textarea id="bk-msg" placeholder="np. wiek zawodnika, aktualny poziom, pytania..."></textarea>
+          </div>
+          <div id="bk-err" style="display:none;font-size:13px;color:#dc2626;padding:10px 14px;background:#fef2f2;border-radius:var(--r-sm);border:1px solid #fecaca"></div>
+        </div>
+        <div class="bk-nav">
+          <button class="btn btn-outline" onclick="goStep(2)">← Wróć</button>
+          <button class="btn btn-primary" id="bkConfirmBtn" onclick="confirmBooking()">Potwierdzam termin →</button>
+        </div>
+      </div>
+
+      <!-- ── SUCCESS ── -->
+      <div class="bk-panel" id="bkSuccess">
+        <div class="bk-success-wrap">
+          <div class="bk-success-icon">✓</div>
+          <h3 class="bk-success-title">Termin został zarezerwowany!</h3>
+          <p class="bk-success-msg">Otrzymasz potwierdzenie i szczegóły konsultacji. Odezwiemy się możliwie szybko.</p>
+          <div class="bk-summary" id="bkSummarySuccess" style="max-width:400px;margin:0 auto 24px"></div>
+          <button class="btn btn-outline" onclick="resetBooking()">Zarezerwuj kolejny termin</button>
+        </div>
+      </div>
+
+    </div><!-- /bk-card -->
   </div>
 </section>
 
@@ -936,9 +1054,7 @@
   <div class="footer-in">
     <div class="footer-top">
       <div>
-        <div style="margin-bottom:14px">
-          <img src="logo-ballwise.jpg" alt="BallWise" style="height:56px;width:auto;border-radius:10px;display:block"/>
-        </div>
+        <div class="footer-brand">BallWise</div>
         <p class="footer-tag">Indywidualny rozwój piłkarza poza klubem.</p>
         <p class="footer-tag" style="margin-top:8px">Treningi na żywo tylko w Poznaniu. Analizy i plany dostępne online.</p>
       </div>
@@ -1012,19 +1128,9 @@ function closeMobile() {
   document.getElementById('mobileMenu').classList.remove('open');
 }
 
-/* ── SELECT SERVICE + SCROLL TO FORM ── */
+/* ── SELECT SERVICE → scroll to booking ── */
 function selectSvc(svc, forma) {
-  const s = document.getElementById('f-svc');
-  const f = document.getElementById('f-form');
-  if (s) {
-    for (let opt of s.options) { if (opt.value === svc || opt.text === svc) { s.value = opt.value; break; } }
-  }
-  if (f && forma) {
-    if (forma === 'online') f.value = 'Online';
-    else if (forma === 'poznan') f.value = 'Poznań (stacjonarnie)';
-  }
   goTo('#zgloszenie');
-  setTimeout(() => { if (s) s.focus(); }, 600);
 }
 
 /* ── TABS ── */
@@ -1076,45 +1182,251 @@ function toggleFaq(el) {
   if (!isOpen) item.classList.add('open');
 }
 
-/* ── FORM SUBMIT ── */
-const form = document.getElementById('mainForm');
-form.addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const errEl = document.getElementById('form-err');
+/* ── BOOKING MODULE ── */
+
+/* ---- DATA STORE ---- */
+// available_slots: day-of-week (1=Mon..5=Fri) → times
+const WEEKLY_SLOTS = {
+  1: ['10:00','12:00','17:00'],   // Poniedziałek
+  2: ['11:00','16:00'],           // Wtorek
+  3: ['10:00','18:00'],           // Środa
+  4: ['12:00','15:00'],           // Czwartek
+  5: ['09:00','13:00'],           // Piątek
+};
+
+// bookings stored in memory (resets on reload — in prod: use backend/DB)
+const bookings = {}; // key: "YYYY-MM-DD|HH:MM" → true
+
+// booking state
+const bk = { goal: null, date: null, time: null };
+let calYear, calMonth;
+
+/* ---- INIT ---- */
+(function initCal() {
+  const now = new Date();
+  calYear = now.getFullYear();
+  calMonth = now.getMonth();
+  renderCal();
+})();
+
+/* ---- STEP NAVIGATION ---- */
+function goStep(n) {
+  document.querySelectorAll('.bk-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('bkStep'+n).classList.add('active');
+  document.querySelectorAll('.bk-step').forEach((s,i) => {
+    const num = i+1;
+    s.classList.toggle('active', num === n);
+    s.classList.toggle('done', num < n);
+  });
+  if (n === 3) buildSummary();
+  document.getElementById('zgloszenie').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+/* ---- STEP 1: GOAL ---- */
+function selectGoal(card) {
+  document.querySelectorAll('.goal-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  bk.goal = card.dataset.goal;
+  document.getElementById('toStep2Btn').disabled = false;
+}
+
+/* ---- STEP 2: CALENDAR ---- */
+function changeMonth(dir) {
+  calMonth += dir;
+  if (calMonth > 11) { calMonth = 0; calYear++; }
+  if (calMonth < 0)  { calMonth = 11; calYear--; }
+  renderCal();
+}
+
+function renderCal() {
+  const months = ['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień'];
+  document.getElementById('calMonthLabel').textContent = months[calMonth] + ' ' + calYear;
+
+  const grid = document.getElementById('calGrid');
+  grid.innerHTML = '';
+
+  const today = new Date(); today.setHours(0,0,0,0);
+  const first = new Date(calYear, calMonth, 1);
+  const lastDay = new Date(calYear, calMonth+1, 0).getDate();
+
+  // Monday-first offset
+  let startDow = first.getDay(); // 0=Sun
+  startDow = startDow === 0 ? 6 : startDow - 1;
+
+  for (let i = 0; i < startDow; i++) {
+    const empty = document.createElement('div');
+    empty.className = 'cal-day empty';
+    grid.appendChild(empty);
+  }
+
+  for (let d = 1; d <= lastDay; d++) {
+    const date = new Date(calYear, calMonth, d);
+    const dow = date.getDay(); // 0=Sun
+    const monDow = dow === 0 ? 7 : dow; // 1=Mon..7=Sun
+    const dateStr = formatDate(calYear, calMonth, d);
+
+    const el = document.createElement('div');
+    el.textContent = d;
+
+    if (date < today) {
+      el.className = 'cal-day past';
+    } else if (date.toDateString() === today.toDateString()) {
+      el.className = 'cal-day today' + (WEEKLY_SLOTS[monDow] ? ' available' : '');
+      if (WEEKLY_SLOTS[monDow]) el.onclick = () => selectDate(dateStr, monDow, el);
+    } else if (WEEKLY_SLOTS[monDow]) {
+      el.className = 'cal-day available';
+      el.onclick = () => selectDate(dateStr, monDow, el);
+    } else {
+      el.className = 'cal-day';
+    }
+
+    if (bk.date === dateStr) el.classList.add('selected');
+    grid.appendChild(el);
+  }
+
+  // re-show time slots if date already selected
+  if (bk.date) {
+    const [y,m,day] = bk.date.split('-').map(Number);
+    if (y === calYear && m-1 === calMonth) {
+      const d2 = new Date(y, m-1, day);
+      const dow2 = d2.getDay() === 0 ? 7 : d2.getDay();
+      renderSlots(bk.date, dow2);
+    } else {
+      document.getElementById('timeWrap').style.display = 'none';
+    }
+  }
+}
+
+function selectDate(dateStr, monDow, el) {
+  bk.date = dateStr; bk.time = null;
+  document.getElementById('toStep3Btn').disabled = true;
+  document.querySelectorAll('.cal-day').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  renderSlots(dateStr, monDow);
+}
+
+function renderSlots(dateStr, monDow) {
+  const wrap = document.getElementById('timeWrap');
+  const slotsEl = document.getElementById('timeSlots');
+  const labelEl = document.getElementById('timeLabel');
+  wrap.style.display = 'block';
+
+  const [y,m,d] = dateStr.split('-');
+  const dayNames = ['','Poniedziałek','Wtorek','Środa','Czwartek','Piątek','Sobota','Niedziela'];
+  labelEl.textContent = `Dostępne godziny — ${dayNames[monDow]}, ${parseInt(d)}.${m}.${y}`;
+
+  const slots = WEEKLY_SLOTS[monDow] || [];
+  slotsEl.innerHTML = '';
+  slots.forEach(t => {
+    const key = dateStr + '|' + t;
+    const taken = bookings[key];
+    const btn = document.createElement('button');
+    btn.textContent = t;
+    btn.className = 'time-slot' + (taken ? ' unavailable' : '');
+    if (!taken) {
+      btn.onclick = () => {
+        bk.time = t;
+        document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+        btn.classList.add('selected');
+        document.getElementById('toStep3Btn').disabled = false;
+      };
+    }
+    if (bk.time === t && !taken) btn.classList.add('selected');
+    slotsEl.appendChild(btn);
+  });
+}
+
+function formatDate(y, m, d) {
+  return y + '-' + String(m+1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+}
+
+/* ---- STEP 3: SUMMARY + CONFIRM ---- */
+function buildSummary() {
+  const [y,m,d] = bk.date.split('-');
+  const dayNames = ['Niedziela','Poniedziałek','Wtorek','Środa','Czwartek','Piątek','Sobota'];
+  const dayName = dayNames[new Date(bk.date).getDay()];
+  const dateFormatted = `${dayName}, ${parseInt(d)}.${m}.${y}`;
+
+  const rows = [
+    ['Cel', bk.goal],
+    ['Data', dateFormatted],
+    ['Godzina', bk.time],
+    ['Forma', 'Online'],
+    ['Czas', '20–30 minut'],
+  ];
+  const html = rows.map(([label, val]) =>
+    `<div class="bk-summary-row"><span class="bk-sum-label">${label}</span><span class="bk-sum-val">${val}</span></div>`
+  ).join('');
+  document.getElementById('bkSummary').innerHTML = html;
+}
+
+async function confirmBooking() {
+  const name = document.getElementById('bk-name').value.trim();
+  const email = document.getElementById('bk-email').value.trim();
+  const phone = document.getElementById('bk-phone').value.trim();
+  const msg = document.getElementById('bk-msg').value.trim();
+  const errEl = document.getElementById('bk-err');
   errEl.style.display = 'none';
 
-  // validate
-  const name = document.getElementById('f-name').value.trim();
-  const age = document.getElementById('f-age').value.trim();
-  const svc = document.getElementById('f-svc').value.trim();
-  const phone = document.getElementById('f-phone').value.trim();
-  const email = document.getElementById('f-email').value.trim();
+  if (!name) { errEl.textContent = 'Podaj imię i nazwisko.'; errEl.style.display = 'block'; return; }
+  if (!email) { errEl.textContent = 'Podaj adres e-mail.'; errEl.style.display = 'block'; return; }
 
-  if (!name) { showErr('Podaj imię i nazwisko zawodnika.'); return; }
-  if (!age) { showErr('Podaj wiek zawodnika.'); return; }
-  if (!svc) { showErr('Wybierz usługę z listy.'); return; }
-  if (!phone && !email) { showErr('Podaj numer telefonu lub adres e-mail.'); return; }
+  const key = bk.date + '|' + bk.time;
+  if (bookings[key]) {
+    errEl.textContent = 'Ten termin został już zarezerwowany. Wybierz inną godzinę.';
+    errEl.style.display = 'block';
+    goStep(2); return;
+  }
 
-  const btn = form.querySelector('.submit-btn');
-  const orig = btn.textContent; btn.textContent = 'Wysyłanie...'; btn.disabled = true;
+  const btn = document.getElementById('bkConfirmBtn');
+  btn.textContent = 'Wysyłanie...'; btn.disabled = true;
+
+  // Build payload
+  const payload = new FormData();
+  payload.append('consultation_goal', bk.goal);
+  payload.append('date', bk.date);
+  payload.append('time', bk.time);
+  payload.append('name', name);
+  payload.append('email', email);
+  payload.append('phone', phone);
+  payload.append('message', msg);
+  payload.append('status', 'pending');
 
   try {
     const res = await fetch('https://formspree.io/f/meelwpnw', {
-      method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' }
+      method: 'POST', body: payload, headers: { Accept: 'application/json' }
     });
-    if (res.ok) {
-      form.reset();
-      document.getElementById('formSuccess').classList.add('show');
-      btn.textContent = '✓ Wysłano';
-      setTimeout(() => { btn.textContent = orig; btn.disabled = false; }, 4000);
-    } else throw new Error();
-  } catch {
-    showErr('Wystąpił błąd. Napisz bezpośrednio: nestafa52@gmail.com');
-    btn.textContent = orig; btn.disabled = false;
-  }
+    if (!res.ok) throw new Error();
 
-  function showErr(msg) { errEl.textContent = msg; errEl.style.display = 'block'; }
-});
+    // Mark slot as taken
+    bookings[key] = true;
+
+    // Show success
+    document.getElementById('bkSummarySuccess').innerHTML = document.getElementById('bkSummary').innerHTML;
+    document.querySelectorAll('.bk-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('bkSuccess').classList.add('active');
+    document.querySelectorAll('.bk-step').forEach(s => s.classList.add('done'));
+
+  } catch {
+    errEl.textContent = 'Wystąpił błąd. Napisz bezpośrednio: nestafa52@gmail.com';
+    errEl.style.display = 'block';
+    btn.textContent = 'Potwierdzam termin →'; btn.disabled = false;
+  }
+}
+
+function resetBooking() {
+  bk.goal = null; bk.date = null; bk.time = null;
+  document.querySelectorAll('.goal-card').forEach(c => c.classList.remove('selected'));
+  document.getElementById('bk-name').value = '';
+  document.getElementById('bk-email').value = '';
+  document.getElementById('bk-phone').value = '';
+  document.getElementById('bk-msg').value = '';
+  document.getElementById('toStep2Btn').disabled = true;
+  document.getElementById('toStep3Btn').disabled = true;
+  document.getElementById('timeWrap').style.display = 'none';
+  renderCal();
+  goStep(1);
+}
 
 /* ── TOAST ── */
 const toastEl = document.getElementById('toast');
